@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Globe, 
   Smartphone, 
@@ -9,51 +9,52 @@ import {
   ArrowRight 
 } from 'lucide-react';
 
+interface Feature {
+  id: number;
+  feature: string;       // change this if your API returns a different key
+  [key: string]: any;    // allow other keys
+}
+
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  color: string;
+  icon: string;          // icon name coming from backend? (optional)
+  features: Feature[];
+}
+
+const iconMap: Record<string, React.ElementType> = {
+  Globe,
+  Smartphone,
+  Database,
+  Cloud,
+  Shield,
+  Cog,
+};
+
 const Services = () => {
-  const services = [
-    {
-      icon: Globe,
-      title: 'Web Development',
-      description: 'Custom web applications built with modern frameworks like React, Vue, and Angular.',
-      features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Cross-browser Compatible'],
-      color: 'blue',
-    },
-    {
-      icon: Smartphone,
-      title: 'Mobile Development',
-      description: 'Native and cross-platform mobile apps for iOS and Android devices.',
-      features: ['Native Performance', 'Cross-platform', 'App Store Ready', 'Push Notifications'],
-      color: 'purple',
-    },
-    {
-      icon: Database,
-      title: 'Database Solutions',
-      description: 'Scalable database design and optimization for high-performance applications.',
-      features: ['Data Modeling', 'Performance Tuning', 'Backup Solutions', 'Migration Services'],
-      color: 'green',
-    },
-    {
-      icon: Cloud,
-      title: 'Cloud Services',
-      description: 'Cloud infrastructure setup, migration, and management services.',
-      features: ['AWS/Azure/GCP', 'DevOps', 'Auto Scaling', 'Cost Optimization'],
-      color: 'orange',
-    },
-    {
-      icon: Shield,
-      title: 'Cybersecurity',
-      description: 'Comprehensive security audits and implementation of security best practices.',
-      features: ['Security Audits', 'Penetration Testing', 'Compliance', 'Risk Assessment'],
-      color: 'red',
-    },
-    {
-      icon: Cog,
-      title: 'System Integration',
-      description: 'Seamless integration of existing systems and third-party services.',
-      features: ['API Development', 'Legacy Modernization', 'Data Synchronization', 'Workflow Automation'],
-      color: 'indigo',
-    },
-  ];
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/services')  // replace with your API endpoint
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then((data: Service[]) => {
+        setServices(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
+      });
+  }, []);
 
   const getColorClasses = (color: string) => {
     const colors = {
@@ -67,6 +68,14 @@ const Services = () => {
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
+  if (loading) {
+    return <p className="text-center py-20">Loading services...</p>;
+  }
+
+  if (error) {
+    return <p className="text-center py-20 text-red-600">Error: {error}</p>;
+  }
+
   return (
     <section id="services" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,33 +87,37 @@ const Services = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1"
-            >
-              <div className={`w-16 h-16 rounded-lg ${getColorClasses(service.color)} flex items-center justify-center mb-6 transition-colors duration-300`}>
-                <service.icon size={32} />
+          {services.map((service, index) => {
+            const IconComponent = iconMap[service.icon] || Globe; // fallback icon
+
+            return (
+              <div 
+                key={index} 
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1"
+              >
+                <div className={`w-16 h-16 rounded-lg ${getColorClasses(service.color)} flex items-center justify-center mb-6 transition-colors duration-300`}>
+                  <IconComponent size={32} />
+                </div>
+                
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((featureObj, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-gray-700">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                      {featureObj.features}
+                    </li>
+                  ))}
+                </ul>
+                
+                <button className="text-blue-600 font-semibold flex items-center group-hover:text-blue-700 transition-colors duration-200">
+                  Learn More
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" size={16} />
+                </button>
               </div>
-              
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-              
-              <ul className="space-y-2 mb-6">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-gray-700">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              
-              <button className="text-blue-600 font-semibold flex items-center group-hover:text-blue-700 transition-colors duration-200">
-                Learn More
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" size={16} />
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-16">
