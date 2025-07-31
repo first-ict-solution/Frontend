@@ -1,82 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 
+interface Project {
+  id: number;
+  title: string;
+  category: string; // e.g., 'web', 'mobile', 'cloud'
+  description: string;
+  image: string;
+  technologies: string[];
+  live_url?: string;
+  github_url?: string;
+}
+
+const filters = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'web', label: 'Web Development' },
+  { id: 'mobile', label: 'Mobile Apps' },
+  { id: 'cloud', label: 'Cloud Solutions' },
+];
+
 const Portfolio = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const projects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      category: 'web',
-      description: 'A full-featured e-commerce solution with payment integration, inventory management, and analytics.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
-    {
-      id: 2,
-      title: 'Healthcare Management System',
-      category: 'web',
-      description: 'Comprehensive healthcare management system for hospitals and clinics with patient records and scheduling.',
-      image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Vue.js', 'Laravel', 'MySQL', 'Docker'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
-    {
-      id: 3,
-      title: 'Mobile Banking App',
-      category: 'mobile',
-      description: 'Secure mobile banking application with biometric authentication and real-time transactions.',
-      image: 'https://images.pexels.com/photos/4386476/pexels-photo-4386476.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React Native', 'Firebase', 'Redux', 'Biometrics'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
-    {
-      id: 4,
-      title: 'Cloud Infrastructure Migration',
-      category: 'cloud',
-      description: 'Complete migration of legacy systems to AWS cloud with improved scalability and performance.',
-      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
-    {
-      id: 5,
-      title: 'Real Estate CRM',
-      category: 'web',
-      description: 'Customer relationship management system specifically designed for real estate agencies.',
-      image: 'https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Angular', 'ASP.NET', 'SQL Server', 'Azure'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
-    {
-      id: 6,
-      title: 'Food Delivery App',
-      category: 'mobile',
-      description: 'Multi-vendor food delivery platform with real-time tracking and payment integration.',
-      image: 'https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Flutter', 'Firebase', 'Google Maps', 'PayPal'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
-  ];
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/projects') // replace with your real endpoint
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch portfolio projects.');
+        return res.json();
+      })
+      .then((data: Project[]) => {
+        setProjects(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
-  const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'web', label: 'Web Development' },
-    { id: 'mobile', label: 'Mobile Apps' },
-    { id: 'cloud', label: 'Cloud Solutions' },
-  ];
+  const filteredProjects =
+    activeFilter === 'all'
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  if (loading) return <p className="text-center py-20">Loading projects...</p>;
+  if (error) return <p className="text-center py-20 text-red-600">Error: {error}</p>;
 
   return (
     <section id="portfolio" className="py-20 bg-white">
@@ -108,41 +79,49 @@ const Portfolio = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <div 
-              key={project.id} 
+            <div
+              key={project.id}
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1"
             >
               <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-4">
-                    <a 
-                      href={project.liveUrl}
-                      className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-                    <a 
-                      href={project.githubUrl}
-                      className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
-                    >
-                      <Github size={20} />
-                    </a>
+                    {project.live_url && (
+                      <a
+                        href={project.live_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                      >
+                        <ExternalLink size={20} />
+                      </a>
+                    )}
+                    {project.github_url && (
+                      <a
+                        href={project.github_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{project.description}</p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (
-                    <span 
+                    <span
                       key={index}
                       className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
                     >
@@ -150,7 +129,7 @@ const Portfolio = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <button className="text-blue-600 font-semibold flex items-center group-hover:text-blue-700 transition-colors duration-200">
                   View Details
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" size={16} />
