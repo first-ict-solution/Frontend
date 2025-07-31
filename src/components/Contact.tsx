@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -34,12 +36,13 @@ const Contact = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        alert(`Error: ${errorData.message || 'Failed to send message.'}`);
+        const message = errorData.message || 'Failed to send message.';
+        toast.error(message); 
         return;
       }
 
       const result = await response.json();
-      alert(result.message || 'Message sent successfully!');
+      toast.success(result.message || 'Message sent successfully!'); 
 
       // Reset form
       setFormData({
@@ -50,7 +53,7 @@ const Contact = () => {
         message: ''
       });
     } catch (error) {
-      alert('Something went wrong. Please try again later.');
+      toast.error('Something went wrong. Please try again later.');
       console.error(error);
     }
   };
@@ -84,6 +87,9 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-white">
+      
+      <ToastContainer position="top-right" autoClose={4000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
@@ -114,7 +120,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Map placeholder */}
+            
             <div className="bg-gray-100 rounded-lg h-64 flex items-center justify-center">
               <div className="text-center">
                 <MapPin className="text-gray-400 mx-auto mb-2" size={48} />
