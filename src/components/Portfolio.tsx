@@ -4,7 +4,7 @@ import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 interface Project {
   id: number;
   title: string;
-  category: string; // e.g., 'web', 'mobile', 'cloud'
+  category: string; 
   description: string;
   image: string;
   technologies: string[];
@@ -26,7 +26,7 @@ const Portfolio = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/projects') // replace with your real endpoint
+    fetch('http://127.0.0.1:8000/api/projects') 
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch portfolio projects.');
         return res.json();
@@ -59,7 +59,7 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Filter Buttons */}
+        
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {filters.map((filter) => (
             <button
@@ -76,7 +76,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <div

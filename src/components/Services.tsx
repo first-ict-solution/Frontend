@@ -11,8 +11,8 @@ import {
 
 interface Feature {
   id: number;
-  feature: string;       // change this if your API returns a different key
-  [key: string]: any;    // allow other keys
+  feature: string;       
+  [key: string]: any;    
 }
 
 interface Service {
@@ -20,7 +20,7 @@ interface Service {
   title: string;
   description: string;
   color: string;
-  icon: string;          // icon name coming from backend? (optional)
+  icon: string;          
   features: Feature[];
 }
 
@@ -39,7 +39,7 @@ const Services = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/services')  // replace with your API endpoint
+    fetch('http://127.0.0.1:8000/api/services')  
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');
@@ -88,7 +88,7 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
-            const IconComponent = iconMap[service.icon] || Globe; // fallback icon
+            const IconComponent = iconMap[service.icon] || Globe; 
 
             return (
               <div 
