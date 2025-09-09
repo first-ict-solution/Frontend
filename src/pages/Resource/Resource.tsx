@@ -3,6 +3,7 @@
 import React from "react";
 import Roadmap from "../Resource/roadmap"; 
 import Footer from "@/components/Footer";
+import PaperPage from "./paper";
 
 const Resource: React.FC = () => {
   return (
@@ -22,6 +23,11 @@ const Resource: React.FC = () => {
         </div>
       </section>
 
+      <section className="py-12 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <PaperPage />
+        </div>
+      </section>
       
       <Footer />
     </>

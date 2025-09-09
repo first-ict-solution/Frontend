@@ -11,7 +11,7 @@ const ContentCard: React.FC<Props> = ({ content }) => {
     <div className="bg-white  shadow-lg p-6 flex flex-col items-center text-center">
       <div className="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-blue-100">
         <img
-          src={content.image?.url || "https://via.placeholder.com/50"}
+          src={content.content_image!}
           alt={content.name}
           className="w-8 h-8"
         />

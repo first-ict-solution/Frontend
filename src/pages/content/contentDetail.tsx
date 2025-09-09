@@ -25,7 +25,7 @@ export default function ContentDetailPage() {
       try {
         const data: Content = await getContentDetails(slug);
         setContent(data);
-        setMainImage(data.image?.url || null);
+        setMainImage(data.content_image || null);
       } catch (err) {
         console.error("Failed to fetch content:", err);
         setContent(null);
@@ -83,9 +83,9 @@ export default function ContentDetailPage() {
             </div>
           )}
 
-          <p className="mt-6 text-gray-500 text-sm">
+          {/* <p className="mt-6 text-gray-500 text-sm">
             Created at: {content.created_at}
-          </p>
+          </p> */}
         </div>
       </div>
       <Footer />
