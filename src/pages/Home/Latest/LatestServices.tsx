@@ -23,7 +23,7 @@ export default function LatestServices() {
 
     const fetchServices = async () => {
       try {
-        const data: ServicePaginatedResponse = await getLatestServices(4);
+        const data: ServicePaginatedResponse = await getLatestServices(6);
         setServices(data.services || []);
       } catch (error) {
         console.error("Failed to fetch latest services:", error);
@@ -47,7 +47,7 @@ export default function LatestServices() {
       </div>
 
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, index) => (
           <div key={service.id} data-aos="fade-up" data-aos-delay={index * 100}>
             <ServiceCard service={service} />

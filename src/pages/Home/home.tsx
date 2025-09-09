@@ -24,7 +24,7 @@ export default function HomePage() {
         <LatestProducts />
         <div className="flex justify-center mt-6">
           <button
-            onClick={() => navigate("/products")}
+            onClick={() => navigate("/product")}
             className="px-6 py-2 px-10 bg-[#0067c2] text-white hover:bg-[#0051a3] transition"
           >
             SEE MORE 
@@ -37,7 +37,7 @@ export default function HomePage() {
         <LatestServices />
         <div className="flex justify-center mt-6">
           <button
-            onClick={() => navigate("/services")}
+            onClick={() => navigate("/service")}
             className="px-6 py-2 px-10 bg-[#0067c2] text-white hover:bg-[#0051a3] transition"
           >
             SEE MORE

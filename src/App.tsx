@@ -1,4 +1,3 @@
-import React from "react";
 import AppRouter from "./lib/router/routes"; 
 import Navbar from "@/components/Navbar";
 

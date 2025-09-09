@@ -20,5 +20,5 @@ export interface Content {
     slug: string;
     created_at: string;
     updated_at: string;
-    image?: ContentImage;
+    content_image: string;
 }

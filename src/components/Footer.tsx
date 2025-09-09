@@ -1,5 +1,4 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Facebook } from 'lucide-react';
+import { Mail, Phone, Linkedin, Twitter, Github, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,9 +47,9 @@ const Footer = () => {
               <img 
                 src="/public/image.png" 
                 alt="First ICT Logo" 
-                className="h-10 w-auto"
+                className="h-12 w-auto"
               />
-              <span className="text-2xl font-bold">First ICT</span>
+              {/* <span className="text-2xl font-bold">First ICT</span> */}
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Transforming businesses through innovative software solutions. 
@@ -65,10 +64,7 @@ const Footer = () => {
                 <Phone size={16} className="text-blue-400" />
                 <span className="text-gray-300">+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin size={16} className="text-blue-400" />
-                <span className="text-gray-300">Silicon Valley, CA</span>
-              </div>
+              
             </div>
           </div>
 
