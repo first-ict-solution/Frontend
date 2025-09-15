@@ -1,0 +1,121 @@
+/* team.css
+   Requires Tailwind for layout utilities (we used Tailwind classes in the component).
+   This file provides the exact octagonal / cut-corner border visuals and inner styling.
+*/
+
+/* --- Shared sizing --- */
+.card-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;   /* fixed size */
+}
+
+/* Outer frame — dark beveled border with clip-path octagon */
+.card-frame {
+  padding: 4px; /* was 6px */
+  border-radius: 4px;
+  -webkit-clip-path: polygon(
+    6% 0,
+    94% 0,
+    100% 6%,
+    100% 94%,
+    94% 100%,
+    6% 100%,
+    0 94%,
+    0 6%
+  );
+  clip-path: polygon(
+    6% 0,
+    94% 0,
+    100% 6%,
+    100% 94%,
+    94% 100%,
+    6% 100%,
+    0 94%,
+    0 6%
+  );
+  background: linear-gradient(180deg, #2a2a2a 0%, #101010 100%);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5),
+              0 1px 0 rgba(255, 255, 255, 0.02) inset;
+  width: 100%;
+}
+
+/* Inner face */
+.card-face {
+  -webkit-clip-path: inherit;
+  clip-path: inherit;
+  background: linear-gradient(180deg, #0f1113 0%, #141517 100%);
+  padding: 8px; /* was 10px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px; /* was 10px */
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.6),
+    inset 0 0 0 2px rgba(255,255,255,0.02);
+}
+
+/* portrait area */
+.portrait-wrap {
+  width: calc(100% - 4px);
+  height: 100px; /* was 140px */
+  border-radius: 6px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #46494b, #0b0b0b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  border: 4px solid rgba(0,0,0,0.45); /* was 6px */
+}
+
+/* portrait image */
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.portrait.logo {
+  object-fit: contain;
+  padding: 4px; /* smaller */
+  background: transparent;
+}
+
+/* label area */
+.label-wrap {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 4px;
+  margin-top: 2px;
+}
+
+/* Name style */
+.member-name {
+  font-weight: 700;
+  font-size: 0.8rem; /* was 0.95rem */
+  color: #ff8a4a;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.7),
+    0 2px 6px rgba(0,0,0,0.45);
+}
+
+/* Role style */
+.member-role {
+  margin-top: 2px;
+  font-size: 0.65rem; /* was 0.72rem */
+  color: #e26b3a;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive portrait height tweak */
+@media (min-width: 640px) {
+  .portrait-wrap { height: 110px; } /* was 150px */
+}
+@media (min-width: 1024px) {
+  .portrait-wrap { height: 125px; } /* was 170px */
+}

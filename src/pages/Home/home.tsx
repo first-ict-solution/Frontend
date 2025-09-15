@@ -7,6 +7,7 @@ import Contact from "@/components/contact";
 import LatestProducts from "../Home/Latest/LatestProducts";
 import LatestServices from "../Home/Latest/LatestServices";
 import { useNavigate } from "react-router-dom";
+import TeamSection from "./Team/team";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -45,9 +46,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      
-      <Contact />  
-
+      <TeamSection/>
       
       <Footer />  
     </>

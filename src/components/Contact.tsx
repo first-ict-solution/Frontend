@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 // @ts-ignore
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Footer from "./Footer";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -253,6 +254,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      <Footer/>
     </>
   );
 };

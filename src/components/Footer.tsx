@@ -15,10 +15,7 @@ const Footer = () => {
     company: [
       { name: 'About Us', href: '#about' },
       { name: 'Our Team', href: '#team' },
-      { name: 'Portfolio', href: '#portfolio' },
       { name: 'Careers', href: '#' },
-      { name: 'Blog', href: '#' },
-      { name: 'News', href: '#' },
     ],
     support: [
       { name: 'Contact Us', href: '#contact' },
@@ -33,68 +30,95 @@ const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, href: '#', color: 'hover:text-blue-600' },
     { icon: Twitter, href: '#', color: 'hover:text-blue-400' },
-    { icon: Github, href: '#', color: 'hover:text-gray-900' },
+    { icon: Github, href: '#', color: 'hover:text-gray-400' },
     { icon: Facebook, href: '#', color: 'hover:text-blue-700' },
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-4 gap-8">
-          
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
-              <img 
-                src="/public/image.png" 
-                alt="First ICT Logo" 
-                className="h-12 w-auto"
-              />
-              {/* <span className="text-2xl font-bold">First ICT</span> */}
-            </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Transforming businesses through innovative software solutions. 
+    <footer className="bg-black text-gray-300">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+
+        {/* Top Branding + Description */}
+        <div className="mb-12 flex flex-col md:flex-row md:justify-between gap-8">
+          {/* Left Section */}
+          <div className="max-w-md text-center md:text-left">
+            <h1 className="font-bold text-white text-xl">FIRST ICT</h1>
+            <p className="text-gray-400 mt-2">
+              Transforming businesses through innovative software solutions.
               We're your trusted partner in digital transformation.
             </p>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail size={16} className="text-blue-400" />
-                <span className="text-gray-300">info@firstict.com</span>
+
+            {/* Contact Info */}
+            <div className="mt-6 space-y-2 text-sm">
+              <div className="flex justify-center md:justify-start items-center space-x-3">
+                <Mail size={14} className="text-blue-400" />
+                <span>info@firstict.com</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone size={16} className="text-blue-400" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+              <div className="flex justify-center md:justify-start items-center space-x-3">
+                <Phone size={14} className="text-blue-400" />
+                <span>+1 (555) 123-4567</span>
               </div>
-              
             </div>
           </div>
 
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Services</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Right Section: Button */}
+          <div className="flex justify-center md:justify-start items-start md:items-center">
+            <a
+              href="#contact"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-semibold transition-colors"
+            >
+              PITCH YOUR PROJECT
+            </a>
+          </div>
+        </div>
+
+        {/* Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+
+          {/* Logo */}
+          <div className="flex justify-center md:justify-start">
+            <img
+              src="/public/image.png"
+              alt="First ICT Logo"
+              className="h-60 w-auto"
+            />
           </div>
 
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
-            <ul className="space-y-3">
+          {/* Company */}
+          <div className="md:ms-20">
+            <h3 className="text-sm tracking-widest text-gray-400 mb-6">/ COMPANY /</h3>
+            <ul className="space-y-3 text-white mb-4">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
+                  <a href={link.href} className="hover:text-blue-500 transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Follow Us */}
+            <h3 className="text-sm tracking-widest text-gray-400 mb-4 mt-10">/ FOLLOW US /</h3>
+            <div className="flex justify-center md:justify-start space-x-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className={`flex items-center justify-center p-2 rounded-full text-white ${social.color}`}
+                >
+                  <social.icon size={20} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Services */}
+          <div className="md:ms-20 md:ps-5">
+            <h3 className="text-sm tracking-widest text-gray-400 mb-6">/ SERVICES /</h3>
+            <ul className="space-y-3 text-white">
+              {footerLinks.services.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="hover:text-blue-500 transition-colors">
                     {link.name}
                   </a>
                 </li>
@@ -102,16 +126,13 @@ const Footer = () => {
             </ul>
           </div>
 
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Support</h3>
-            <ul className="space-y-3">
+          {/* Support */}
+          <div className="md:ms-20 md:ps-8">
+            <h3 className="text-sm tracking-widest text-gray-400 mb-6">/ SUPPORT /</h3>
+            <ul className="space-y-3 text-white">
               {footerLinks.support.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
+                  <a href={link.href} className="hover:text-blue-500 transition-colors">
                     {link.name}
                   </a>
                 </li>
@@ -120,44 +141,9 @@ const Footer = () => {
           </div>
         </div>
 
-        
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-xl font-semibold mb-2">Stay Updated</h3>
-              <p className="text-gray-300">
-                Subscribe to our newsletter for the latest updates and insights.
-              </p>
-            </div>
-            <div className="flex space-x-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
-              />
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-
-        
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-300 text-sm">
-            © {currentYear} First ICT. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                className={`text-gray-400 ${social.color} transition-colors duration-200`}
-              >
-                <social.icon size={20} />
-              </a>
-            ))}
-          </div>
+        {/* Bottom */}
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+          © {currentYear} First ICT. All rights reserved.
         </div>
       </div>
     </footer>

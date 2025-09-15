@@ -23,7 +23,7 @@ export default function LatestServices() {
 
     const fetchServices = async () => {
       try {
-        const data: ServicePaginatedResponse = await getLatestServices(6);
+        const data: ServicePaginatedResponse = await getLatestServices(3);
         setServices(data.services || []);
       } catch (error) {
         console.error("Failed to fetch latest services:", error);
