@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, X, Menu } from "lucide-react";
+import { Search, X, Menu, User } from "lucide-react"; // Added User icon
 import Logo from "../assets/Artboard 11.png";
 import { Product, Service } from "@/pages/search/type/type";
 import { searchItems } from "@/pages/search/fetcher/fetcher"; 
@@ -57,11 +57,24 @@ export default function Navbar() {
             <a href="/service" className="hover:text-gray-300">Service</a>
             <a href="/content" className="hover:text-gray-300">Content</a>
             <a href="/resource" className="hover:text-gray-300">Resource</a>
+            <a href="/contact" className="hover:text-gray-300">Conatct US</a>
           </nav>
           <div className="flex items-center gap-4">
+
+             {/* New Button next to search */}
+            <button
+              onClick={() => alert("Profile clicked!")}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-md text-sm"
+            >
+              Get a Quote
+            </button>
+
+            {/* Search Button */}
             <button onClick={() => setShowSearch(true)} className="hover:text-gray-300">
               <Search className="h-5 w-5" />
             </button>
+
+            {/* Mobile Menu */}
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden hover:text-gray-300">
               <Menu className="h-6 w-6" />
             </button>

@@ -44,12 +44,10 @@ const Hero: React.FC = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
           <button className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center group">
-            Get Started
+            Explore Our Service
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" size={20} />
           </button>
-          <button className="border-2 border-white lg:border-gray-300 text-white lg:text-gray-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-colors duration-200">
-            View Portfolio
-          </button>
+         
         </div>
       </div>
 
