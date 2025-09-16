@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import type { Service } from "./type/type";
-import { Star, CheckCircle } from "lucide-react"; // ✅ Use CheckCircle for check icon
+import {  CheckCircle } from "lucide-react"; // ✅ Use CheckCircle for check icon
 
 
 interface Props {
