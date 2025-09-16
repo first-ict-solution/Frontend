@@ -2,8 +2,8 @@
 
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero/Hero";
-import AboutSection from "@/components/about"; 
-import Contact from "@/components/contact";
+import AboutSection from "@/components/About"; 
+// import Contact from "@/components/contact";
 import LatestProducts from "../Home/Latest/LatestProducts";
 import LatestServices from "../Home/Latest/LatestServices";
 import { useNavigate } from "react-router-dom";
