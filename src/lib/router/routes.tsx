@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "@/pages/Home/home";
+import HomePage from "@/pages/Home/Home";
 import ProductsPage from "@/pages/Product/product";
 import ProductDetail from "@/pages/Product/detailProduct";
 import ServiceList from "@/pages/Service/service";
@@ -8,7 +8,7 @@ import ServiceDetail from "@/pages/Service/serviceDetail";
 import ContentPage from "@/pages/content/content";
 import ContentDetailPage from "@/pages/content/contentDetail";
 import Resource from "@/pages/Resource/Resource";
-import Contact from "@/components/contact";
+// import Contact from "@/components/contact";
 
 export default function AppRouter() {
   return (
@@ -22,7 +22,7 @@ export default function AppRouter() {
         <Route path="/content" element={<ContentPage />} />
         <Route path="/content/:slug" element={<ContentDetailPage />} />
         <Route path="/resource" element={<Resource />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/contact" element={<Contact />} /> */}
         
       </Routes>
     </BrowserRouter>

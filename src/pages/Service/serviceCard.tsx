@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import type { Service } from "./type/type";
 import { CheckCircle } from "lucide-react"; 
 
-
 interface Props {
     service: Service;
 }

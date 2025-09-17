@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, X, Menu, User } from "lucide-react"; // Added User icon
+import { Search, X, Menu } from "lucide-react"; // Added User icon
 import Logo from "../assets/Artboard 11.png";
 import { Product, Service } from "@/pages/search/type/type";
 import { searchItems } from "@/pages/search/fetcher/fetcher"; 
