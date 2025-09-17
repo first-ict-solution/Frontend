@@ -48,7 +48,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full bg-gray-900 text-white shadow-md">
+      <header className="w-full bg-black text-white shadow-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
           <img src={Logo} alt="Logo" className="h-10 w-auto" />
           <nav className="hidden md:flex space-x-6">
@@ -57,7 +57,7 @@ export default function Navbar() {
             <a href="/service" className="hover:text-gray-300">Service</a>
             <a href="/content" className="hover:text-gray-300">Content</a>
             <a href="/resource" className="hover:text-gray-300">Resource</a>
-            <a href="/contact" className="hover:text-gray-300">Conatct US</a>
+            <a href="/contact" className="hover:text-gray-300">Conatct Us</a>
           </nav>
           <div className="flex items-center gap-4">
 
@@ -88,6 +88,7 @@ export default function Navbar() {
             <a href="/service" className="block py-2 hover:text-gray-300">Service</a>
             <a href="/content" className="block py-2 hover:text-gray-300">Content</a>
             <a href="/resource" className="block py-2 hover:text-gray-300">Resource</a>
+            <a href="/contact" className="hover:text-gray-300">Conatct Us</a>
           </div>
         )}
       </header>

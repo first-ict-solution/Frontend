@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { getSliders } from "../Hero/fetcher/fetcher";
 import type { Slider } from "../Hero/type/type";
-
+import { useNavigate } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
@@ -18,6 +18,7 @@ const Hero: React.FC = () => {
 
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getSliders()
@@ -43,7 +44,9 @@ const Hero: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
-          <button className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center group">
+          <button 
+          onClick={() => navigate("/service")}
+          className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center group">
             Explore Our Service
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" size={20} />
           </button>
@@ -83,18 +86,7 @@ const Hero: React.FC = () => {
             </Swiper>
 
            
-            <button
-              ref={prevRef}
-              className="absolute top-1/2 left-4 z-10 -translate-y-1/2 w-10 h-10 rounded-full bg-white bg-opacity-40 flex items-center justify-center hover:bg-opacity-70 shadow-md"
-            >
-              <ChevronLeft className="text-white w-5 h-5" />
-            </button>
-            <button
-              ref={nextRef}
-              className="absolute top-1/2 right-4 z-10 -translate-y-1/2 w-10 h-10 rounded-full bg-white bg-opacity-40 flex items-center justify-center hover:bg-opacity-70 shadow-md"
-            >
-              <ChevronRight className="text-white w-5 h-5" />
-            </button>
+            
           </>
         ) : (
           <div className="flex items-center justify-center h-full bg-gray-200">No sliders available</div>

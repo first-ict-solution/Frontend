@@ -5,22 +5,21 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: 'Web Development', href: '#services' },
-      { name: 'Mobile Development', href: '#services' },
-      { name: 'Cloud Services', href: '#services' },
-      { name: 'Database Solutions', href: '#services' },
-      { name: 'Cybersecurity', href: '#services' },
-      { name: 'System Integration', href: '#services' },
+      { name: 'Web Development', href: '/service' },
+      { name: 'Mobile Development', href: '/service' },
+      { name: 'Cloud Services', href: '/service' },
+      { name: 'Database Solutions', href: '/service' },
+      { name: 'Cybersecurity', href: '/service' },
+      { name: 'System Integration', href: '/service' },
     ],
     company: [
-      { name: 'About Us', href: '#about' },
-      { name: 'Our Team', href: '#team' },
+      { name: 'About Us', href: '/' },
+      { name: 'Our Team', href: '/' },
       { name: 'Careers', href: '#' },
     ],
     support: [
-      { name: 'Contact Us', href: '#contact' },
+      { name: 'Contact Us', href: '/contact' },
       { name: 'Help Center', href: '#' },
-      { name: 'Documentation', href: '#' },
       { name: 'Privacy Policy', href: '#' },
       { name: 'Terms of Service', href: '#' },
       { name: 'Cookie Policy', href: '#' },
