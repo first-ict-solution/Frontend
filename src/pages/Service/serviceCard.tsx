@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import type { Service } from "./type/type";
-import { Star, CheckCircle } from "lucide-react"; // ✅ Use CheckCircle for check icon
+import { CheckCircle } from "lucide-react"; 
 
 
 interface Props {
@@ -14,7 +14,7 @@ const ServiceCard: React.FC<Props> = ({ service }) => {
     return (
         <div className="flex bg-[#414864] shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
 
-            <div className="w-1/3">
+            <div className="w-1/2">
                 <img
                     src={imageUrl}
                     alt={service.name}
@@ -30,16 +30,8 @@ const ServiceCard: React.FC<Props> = ({ service }) => {
                 <h3 className="text-lg text-white font-bold">{service.name}</h3>
 
 
-
-                {service.proposal && (
-                    <p className="text-white text-sm mb-3 line-clamp-2">
-                        {service.proposal}
-                    </p>
-                )}
-
-
                 {service.category_name && (
-                    <p className="text-sm font-medium text-gray-700">
+                    <p className="text-sm font-medium text-gray-700 mt-5">
                         <span className="text-white">{service.category_name}</span>
                     </p>
                 )}

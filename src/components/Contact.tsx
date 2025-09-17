@@ -15,6 +15,7 @@ const Contact = () => {
     email: "",
     company: "",
     subject: "",
+    phone: "",
     message: "",
   });
 
@@ -56,10 +57,11 @@ const Contact = () => {
       const result = await response.json();
       toast.success(result.message || "Message sent successfully!");
 
-      // Reset form
+      
       setFormData({
         name: "",
         email: "",
+        phone: "",
         company: "",
         subject: "",
         message: "",
@@ -131,7 +133,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
             <div className="bg-gray-50 rounded-xl p-8" data-aos="fade-left">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Send us a Message
@@ -174,6 +175,24 @@ const Contact = () => {
                       placeholder="your.email@example.com"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="+1 (555) 123-4567"
+                  />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -220,6 +239,24 @@ const Contact = () => {
                   </div>
                 </div>
 
+
+                
+                <div>
+                  <label
+                    htmlFor="file"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Upload File
+                  </label>
+                  <input
+                    type="file"
+                    id="file"
+                    name="file"
+                    className="w-full"
+                  />
+                </div>
+
+                
                 <div>
                   <label
                     htmlFor="message"
@@ -255,7 +292,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };
