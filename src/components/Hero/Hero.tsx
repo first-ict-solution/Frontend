@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getSliders } from "../Hero/fetcher/fetcher";
 import type { Slider } from "../Hero/type/type";
 import { useNavigate } from "react-router-dom";
