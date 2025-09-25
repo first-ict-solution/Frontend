@@ -1,17 +1,23 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, X, Menu, User } from "lucide-react"; // Added User icon
+import { Search, X, Menu } from "lucide-react";
 import Logo from "../assets/Artboard 11.png";
 import { Product, Service } from "@/pages/search/type/type";
-import { searchItems } from "@/pages/search/fetcher/fetcher"; 
+import { searchItems } from "@/pages/search/fetcher/fetcher";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<{ products: Product[]; services: Service[] }>({ products: [], services: [] });
+  const [results, setResults] = useState<{ products: Product[]; services: Service[] }>({
+    products: [],
+    services: [],
+  });
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!query) {
@@ -50,21 +56,25 @@ export default function Navbar() {
     <>
       <header className="w-full bg-black text-white shadow-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
+          {/* Logo */}
           <img src={Logo} alt="Logo" className="h-10 w-auto" />
+
+          {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-6">
             <a href="/" className="hover:text-gray-300">Home</a>
             <a href="/product" className="hover:text-gray-300">Product</a>
             <a href="/service" className="hover:text-gray-300">Service</a>
             <a href="/content" className="hover:text-gray-300">Content</a>
             <a href="/resource" className="hover:text-gray-300">Resource</a>
-            <a href="/contact" className="hover:text-gray-300">Conatct Us</a>
+            <a href="/contact" className="hover:text-gray-300">Contact Us</a>
           </nav>
-          <div className="flex items-center gap-4">
 
-             {/* New Button next to search */}
+          {/* Actions */}
+          <div className="flex items-center gap-4">
+            {/* 👇 Get a Quote navigates to /contact */}
             <button
-              onClick={() => alert("Profile clicked!")}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-md text-sm"
+              onClick={() => navigate("/contact")}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-sm text-md"
             >
               Get a Quote
             </button>
@@ -74,13 +84,17 @@ export default function Navbar() {
               <Search className="h-5 w-5" />
             </button>
 
-            {/* Mobile Menu */}
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden hover:text-gray-300">
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden hover:text-gray-300"
+            >
               <Menu className="h-6 w-6" />
             </button>
           </div>
         </div>
 
+        {/* Mobile Nav */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-gray-800 text-white px-6 py-4 space-y-2">
             <a href="/" className="block py-2 hover:text-gray-300">Home</a>
@@ -88,7 +102,7 @@ export default function Navbar() {
             <a href="/service" className="block py-2 hover:text-gray-300">Service</a>
             <a href="/content" className="block py-2 hover:text-gray-300">Content</a>
             <a href="/resource" className="block py-2 hover:text-gray-300">Resource</a>
-            <a href="/contact" className="hover:text-gray-300">Conatct Us</a>
+            <a href="/contact" className="hover:text-gray-300">Contact Us</a>
           </div>
         )}
       </header>
@@ -96,7 +110,10 @@ export default function Navbar() {
       {/* Search Overlay */}
       {showSearch && (
         <div className="fixed top-0 left-0 w-full h-[100] bg-gray-100 z-50 p-6 overflow-auto">
-          <button onClick={() => setShowSearch(false)} className="absolute right-6 top-6 text-black hover:text-gray-600">
+          <button
+            onClick={() => setShowSearch(false)}
+            className="absolute right-6 top-6 text-black hover:text-gray-600"
+          >
             <X className="h-6 w-6" />
           </button>
           <div className="max-w-2xl mx-auto">
@@ -119,7 +136,11 @@ export default function Navbar() {
                 <div className="border-b px-4 py-2">
                   <h4 className="font-bold mb-2">Products</h4>
                   {results.products.map((item) => (
-                    <a key={item.id} href={`/product/${item.slug}`} className="block px-2 py-1 hover:bg-gray-100 rounded">
+                    <a
+                      key={item.id}
+                      href={`/product/${item.slug}`}
+                      className="block px-2 py-1 hover:bg-gray-100 rounded"
+                    >
                       {item.name}
                     </a>
                   ))}
@@ -130,7 +151,11 @@ export default function Navbar() {
                 <div className="px-4 py-2">
                   <h4 className="font-bold mb-2">Services</h4>
                   {results.services.map((item) => (
-                    <a key={item.id} href={`/service/${item.slug.trim()}`} className="block px-2 py-1 hover:bg-gray-100 rounded">
+                    <a
+                      key={item.id}
+                      href={`/service/${item.slug.trim()}`}
+                      className="block px-2 py-1 hover:bg-gray-100 rounded"
+                    >
                       {item.name}
                     </a>
                   ))}

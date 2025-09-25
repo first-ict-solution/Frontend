@@ -4,6 +4,19 @@ export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
   	extend: {
+		fontFamily: {
+        sans: ['"Times New Roman"', 'sans-serif'],
+      	},
+		fontSize: {
+        body: ['16px', { lineHeight: '24px' }], 
+        h1: ['32px', { lineHeight: '40px' }],   
+        h2: ['26px', { lineHeight: '34px' }],   
+        h3: ['20px', { lineHeight: '28px' }],   
+        caption: ['12px', { lineHeight: '16px' }], 
+      },
+      maxWidth: {
+        text: '75ch', 
+      },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
