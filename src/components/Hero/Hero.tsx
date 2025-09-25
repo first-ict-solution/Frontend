@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
           <button 
           onClick={() => navigate("/service")}
-          className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center group">
+          className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center group">
             Explore Our Service
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-200" size={20} />
           </button>

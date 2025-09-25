@@ -1,6 +1,7 @@
-
+// apiClient.ts
 import axios from "axios";
 
+console.log("Backend API URL:", import.meta.env.VITE_BACKEND_API_URL);
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_API_URL || "http://localhost:8000",
@@ -8,6 +9,5 @@ const apiClient = axios.create({
     "Content-Type": "application/json",
   },
 });
-
 
 export default apiClient

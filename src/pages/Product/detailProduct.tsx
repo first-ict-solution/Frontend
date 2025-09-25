@@ -160,7 +160,7 @@ export default function ProductDetail() {
         <div className="text-center" data-aos="fade-up">
           <button
             onClick={() => navigate("/contact")}
-            className="px-10 my-20 py-3 bg-[#0067c2] hover:bg-[#1381dcff] text-white font-semibold rounded-lg transition-colors duration-200"
+            className="px-10 my-20 py-3 bg-[#0067c2] hover:bg-[#1381dcff] text-white font-semibold transition-colors duration-200"
           >
             Contact Us
           </button>
