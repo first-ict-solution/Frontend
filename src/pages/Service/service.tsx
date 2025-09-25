@@ -32,7 +32,7 @@ const ServiceList: React.FC = () => {
       
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-[#0067c2]">Our Services</h2>
+          <h2 className="text-3xl font-bold text-black">Our Services</h2>
           <p className="text-gray-500 mt-2 mb-20">
             Explore our wide range of professional services tailored to your needs.
           </p>

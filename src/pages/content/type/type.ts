@@ -22,3 +22,4 @@ export interface Content {
     updated_at: string;
     content_image: string;
 }
+
