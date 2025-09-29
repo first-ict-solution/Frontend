@@ -1,13 +1,16 @@
-// fetcher.ts
-import { Product, Service } from "../type/type";
+import apiClient from "@/lib/apiClient";
+import type { ApiResponse } from "../type/type";
+import type { Product, Service } from "../type/type";
 
-export async function searchItems(query: string): Promise<{ products: Product[]; services: Service[] }> {
-  const response = await fetch(`http://localhost:8000/api/search?q=${encodeURIComponent(query)}`);
-  if (!response.ok) throw new Error("Search failed");
-  const res = await response.json();
+export const searchItems = async (
+  query: string
+): Promise<{ products: Product[]; services: Service[] }> => {
+  const res = await apiClient.get<ApiResponse<{ products: Product[]; services: Service[] }>>(
+    `/api/search?q=${encodeURIComponent(query)}`
+  );
 
   return {
-    products: res.data?.products || [],
-    services: res.data?.services || [],
+    products: res.data.data?.products || [],
+    services: res.data.data?.services || [],
   };
-}
+};

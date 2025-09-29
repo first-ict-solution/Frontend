@@ -30,9 +30,14 @@ const Roadmap: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4">Roadmap</h2>
       <ul className="space-y-4">
         {roadmap.map((item) => (
-          <li key={item.id} className="border p-4 rounded shadow hover:shadow-lg transition">
+          <li
+            key={item.id}
+            className="border p-4 rounded shadow hover:shadow-lg transition"
+          >
             <h3 className="text-xl font-semibold">{item.title}</h3>
-            <p>{item.description}</p>
+            <div className="text-gray-700">
+              {item.description.replace(/<[^>]+>/g, "")}
+            </div>
           </li>
         ))}
       </ul>

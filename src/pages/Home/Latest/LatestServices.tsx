@@ -1,7 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getLatestServices } from "@/pages/Service/fetcher/fetcher";
-import type { Service, ServicePaginatedResponse } from "@/pages/Service/type/type";
+import type {
+  Service,
+  ServicePaginatedResponse,
+} from "@/pages/Service/type/type";
 import { Link } from "react-router-dom";
 // @ts-ignore
 import AOS from "aos";
@@ -34,12 +37,15 @@ export default function LatestServices() {
   }, []);
 
   if (loading) return <p className="text-center py-10">Loading services...</p>;
-  if (services.length === 0) return <p className="text-center py-10">No services found.</p>;
+  if (services.length === 0)
+    return <p className="text-center py-10">No services found.</p>;
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-12 relative">
       <div className="text-center mb-16" data-aos="fade-up">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Latest Services</h2>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          Our Latest Services
+        </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Explore our top-notch services crafted for your business success.
         </p>
@@ -67,20 +73,27 @@ export default function LatestServices() {
                 backgroundPosition: "center",
               }}
             >
-              
               <div className="absolute inset-0 bg-black/50"></div>
 
-              
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 md:px-8 text-white">
-                <h3 className="text-3xl md:text-4xl font-bold mb-5">{service.name}</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-5">
+                  {service.name}
+                </h3>
                 <p className="mb-8 text-sm md:text-base">
                   {service.proposal && (
-                    <div dangerouslySetInnerHTML={{ __html: service.proposal }} />
+                    <span>
+                      {service.proposal
+                        .replace(/<[^>]+>/g, "") 
+                        .split(" ")
+                        .slice(0, 50)
+                        .join(" ")}
+                      ...
+                    </span>
                   )}
                 </p>
                 <Link
                   to={`/service/${service.slug}`}
-                  className="px-10 py-2 bg-blue-600 hover:bg-blue-700 font-semibold w-max transition"
+                  className="px-10 py-2 bg-blue-600 hover:bg-blue-700 font-semibold w-max transition rounded-sm"
                 >
                   See Detail
                 </Link>
@@ -89,7 +102,6 @@ export default function LatestServices() {
           </SwiperSlide>
         ))}
 
-        
         <button className="custom-prev absolute top-1/2 left-4 -translate-y-1/2 z-10 bg-white/40 hover:bg-white text-gray-800 p-3 rounded-full shadow-md transition">
           <ChevronLeft size={24} />
         </button>

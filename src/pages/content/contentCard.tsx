@@ -46,12 +46,10 @@ const ContentCard: React.FC<Props> = ({ content }) => {
           </span>
         </div>
 
-      
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
           {content.name}
         </h3>
 
-      
         <p className="text-gray-600 text-sm leading-7 mb-3 flex-1">
           {truncatedDescription}
         </p>

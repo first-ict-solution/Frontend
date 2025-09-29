@@ -12,3 +12,9 @@ export type Service = {
   slug: string;
   [key: string]: any; 
 };
+
+export type ApiResponse<T> = {
+  status: string;     
+  message?: string;  
+  data: T;           
+};

@@ -7,15 +7,14 @@ import { getLatestProducts } from "@/pages/Product/fetcher/fetcher";
 import type { Product, PaginatedResponse } from "@/pages/Product/type/type";
 import ProductCard from "@/pages/Product/productCard";
 
-
 export default function LatestProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     AOS.init({
-      duration: 800, 
-      easing: "ease-in-out", 
+      duration: 800,
+      easing: "ease-in-out",
       once: true,
     });
 
@@ -33,14 +32,18 @@ export default function LatestProducts() {
   }, []);
 
   if (loading) return <p className="text-center py-10">Loading products...</p>;
-  if (products.length === 0) return <p className="text-center py-10">No products found.</p>;
+  if (products.length === 0)
+    return <p className="text-center py-10">No products found.</p>;
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-12">
       <div className="text-center mb-16" data-aos="fade-up">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Latest Products</h2>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          Our Latest Products
+        </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non ratione quis eligendi error.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non ratione
+          quis eligendi error.
         </p>
       </div>
 
