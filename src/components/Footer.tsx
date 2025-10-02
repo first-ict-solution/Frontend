@@ -1,5 +1,5 @@
 import { Mail, Phone, Linkedin, Twitter, Github, Facebook } from 'lucide-react';
-
+import image from "../assets/Artboard 2.png";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -34,7 +34,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black text-gray-300">
+    <footer className="bg-gray-800 text-gray-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
 
         {/* Top Branding + Description */}
@@ -64,7 +64,7 @@ const Footer = () => {
           <div className="flex justify-center md:justify-start items-start md:items-center">
             <a
               href="#contact"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-semibold transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-semibold transition-colors rounded-sm"
             >
               PITCH YOUR PROJECT
             </a>
@@ -77,7 +77,7 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex justify-center md:justify-start">
             <img
-              src="/public/image.png"
+              src={image}
               alt="First ICT Logo"
               className="h-60 w-auto"
             />

@@ -63,7 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     <button
       onClick={goToDetail}
-      className="w-full bg-[#0067c2] text-white py-1.5 rounded-md hover:bg-[#1381dcff] transition-colors duration-200 font-semibold text-sm"
+      className="w-full bg-[#0067c2] text-white py-1.5 rounded-md hover:bg-[#1381dcff] transition-colors duration-200 font-semibold text-sm "
     >
       Show Details
     </button>

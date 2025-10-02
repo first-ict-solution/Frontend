@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Search, X, Menu } from "lucide-react";
-import Logo from "../assets/Artboard 11.png";
+import Logo from "../assets/Artboard 1.png";
 import { Product, Service } from "@/pages/search/type/type";
 import { searchItems } from "@/pages/search/fetcher/fetcher";
 import { useNavigate } from "react-router-dom";
@@ -54,9 +54,8 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full bg-black text-white shadow-md">
+      <header className="w-full bg-gray-800 text-white shadow-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
-          {/* Logo */}
           <img src={Logo} alt="Logo" className="h-10 w-auto" />
 
           {/* Desktop Nav */}
@@ -71,7 +70,6 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            {/* 👇 Get a Quote navigates to /contact */}
             <button
               onClick={() => navigate("/contact")}
               className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded-sm text-md"
@@ -79,7 +77,6 @@ export default function Navbar() {
               Get a Quote
             </button>
 
-            {/* Search Button */}
             <button onClick={() => setShowSearch(true)} className="hover:text-gray-300">
               <Search className="h-5 w-5" />
             </button>

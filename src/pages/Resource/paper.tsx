@@ -24,7 +24,7 @@ const PaperPage: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">
+      <h2 className="text-3xl font-bold text-center text-dark mb-6">
         Latest Papers
       </h2>
 

@@ -2,14 +2,13 @@
 
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero/Hero";
-import AboutSection from "@/components/About"; 
-// import Contact from "@/components/contact";
+import AboutSection from "@/pages/Home/Section/About"; 
 import LatestProducts from "../Home/Latest/LatestProducts";
 import LatestServices from "../Home/Latest/LatestServices";
 import LatestContents from "./Latest/LatestContent";
 import { useNavigate } from "react-router-dom";
 import TeamSection from "./Team/team";
-import WorkingProcess from "./WorkingProcess/working";
+import WorkingProcess from "./Section/working";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ export default function HomePage() {
         <div className="flex justify-center mt-6">
           <button
             onClick={() => navigate("/product")}
-            className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition"
+            className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition rounded-sm"
           >
             SEE MORE
           </button>
@@ -39,7 +38,7 @@ export default function HomePage() {
         <div className="flex justify-center mt-6">
           <button
             onClick={() => navigate("/service")}
-            className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition"
+            className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition rounded-sm"
           >
             SEE MORE
           </button>
@@ -52,7 +51,7 @@ export default function HomePage() {
         <div className="flex justify-center mt-6">
           <button
             onClick={() => navigate("/content")}
-            className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition"
+            className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition rounded-sm"
           >
             SEE MORE
           </button>

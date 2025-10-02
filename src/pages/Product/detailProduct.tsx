@@ -68,7 +68,7 @@ export default function ProductDetail() {
   return (
     <>
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-bold text-[#0067c2] text-center py-10 mb-10">
+        <h2 className="text-3xl font-bold text-dark text-center py-10 mb-10">
           Detail Products
         </h2>
 
@@ -160,7 +160,7 @@ export default function ProductDetail() {
         <div className="text-center" data-aos="fade-up">
           <button
             onClick={() => navigate("/contact")}
-            className="px-10 my-20 py-3 bg-[#0067c2] hover:bg-[#1381dcff] text-white font-semibold transition-colors duration-200"
+            className="px-10 my-20 py-3 bg-[#0067c2] hover:bg-[#1381dcff] text-white font-semibold transition-colors duration-200 rounded-sm"
           >
             Contact Us
           </button>

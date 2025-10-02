@@ -18,12 +18,14 @@ const PaperCard: React.FC<Props> = ({ paper }) => {
         className="h-40 w-full object-cover rounded-md"
       />
       <h3 className="mt-2 font-semibold text-lg">{paper.name}</h3>
-      <p className="text-gray-600 text-sm line-clamp-3">{paper.description}</p>
+      <p className="text-gray-600 text-sm line-clamp-3">
+        {paper.description.replace(/<[^>]+>/g, "")}
+      </p>
 
       {paper.downloadable === 1 && (
         <a
           href={downloadUrl}
-          download={fileName} 
+          download={fileName}
           className="mt-3 px-4 flex items-center gap-2 justify-center py-2 bg-blue-600 text-white text-center text-sm rounded hover:bg-blue-700"
         >
           Learn More <Download size={16} />
