@@ -54,7 +54,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full bg-gray-800 text-white shadow-md">
+      <header className="sticky top-0 z-50  w-full bg-gray-800 text-white shadow-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
           <img src={Logo} alt="Logo" className="h-10 w-auto" />
 

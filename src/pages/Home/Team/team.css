@@ -3,18 +3,24 @@
   overflow: hidden;
   border-radius: 12px;
   cursor: pointer;
-  perspective: 1000px; 
+  perspective: 1000px;
+  width: 100%;
+  max-width: 280px; 
+  margin: auto;
+  border: 3px solid #e5e7eb;
 }
 
 .team-image {
   width: 100%;
+  height: 380px; 
+  object-fit: cover;
+  border-radius: 10px; 
   display: block;
-  border-radius: 12px;
   transition: transform 0.5s ease;
 }
 
 .team-card:hover .team-image {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 
@@ -24,7 +30,7 @@
   left: 0;
   right: 0;
   opacity: 0;
-  pointer-events: none; 
+  pointer-events: none;
   transition: opacity 0.4s ease;
 }
 
@@ -33,23 +39,22 @@
   pointer-events: auto;
 }
 
-
 .overlay-blue {
   background-color: #1e40af;
   color: #fff;
   padding: 12px;
   text-align: center;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   transform-origin: top;
   transform: rotateX(-90deg);
   transition: transform 0.5s ease;
+  width: 100%;
 }
 
 .team-card:hover .overlay-blue {
-  transform: rotateX(0deg); 
+  transform: rotateX(0deg);
 }
-
 
 .overlay-black {
   background-color: rgba(0, 0, 0, 0.85);
@@ -59,31 +64,14 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   transform-origin: bottom;
   transform: rotateX(90deg);
   transition: transform 0.5s ease;
+  width: 100%;
 }
 
 .team-card:hover .overlay-black {
-  transform: rotateX(0deg); 
-}
-
-
-.social-icon {
-  width: 36px;
-  height: 36px;
-  background-color: #111;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.social-icon:hover {
-  background-color: #1e40af;
+  transform: rotateX(0deg);
 }

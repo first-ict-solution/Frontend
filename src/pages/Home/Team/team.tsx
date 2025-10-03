@@ -5,7 +5,7 @@ import type { Team } from "./type/type";
 // @ts-ignore
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Github, Linkedin, AlertCircle } from "lucide-react";
+import { Github, Linkedin, Globe } from "lucide-react";
 
 export default function TeamSection() {
   const [teams, setTeams] = useState<Team[]>([]);
@@ -42,14 +42,13 @@ export default function TeamSection() {
                 className="team-image"
               />
 
-          
               <div className="overlay-wrapper">
                 <div className="overlay-blue">
                   <h3 className="member-name">{member.name}</h3>
                   <p className="member-role">{member.position}</p>
                 </div>
 
-              
+                {/* Only render icons if data exists */}
                 <div className="overlay-black flex space-x-3">
                   {member.github && (
                     <a
@@ -61,6 +60,7 @@ export default function TeamSection() {
                       <Github size={20} />
                     </a>
                   )}
+
                   {member.linkedin && (
                     <a
                       href={member.linkedin}
@@ -72,17 +72,16 @@ export default function TeamSection() {
                     </a>
                   )}
 
-                  {member.linkedin && (
+                  {member.portfolio && (
                     <a
-                      href={member.linkedin}
+                      href={member.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="social-icon"
                     >
-                      <AlertCircle size={20} />
+                      <Globe size={20} />
                     </a>
                   )}
-                  
                 </div>
               </div>
             </div>
