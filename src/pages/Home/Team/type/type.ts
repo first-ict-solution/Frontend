@@ -6,7 +6,8 @@ export interface Team {
   team_image?: string;
   description?: string;
   github?: string; 
-  linkedin?: string;   
+  linkedin?: string;  
+  portfolio?: string;
   created_at?: string;
   updated_at?: string;
 }
