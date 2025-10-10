@@ -26,23 +26,22 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: "What is Technology service?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing awesom. Optio, neque qui velit. Magni dolorum quidem ipsam also as eligendi, totam, facilis laudantium.",
+    answer: "Technology service is the use of technology to help people or businesses work efficiently and solve problems. It includes IT support, software development, cloud services, and cybersecurity to ensure smooth and secure operations."
   },
   {
-    question: "How To Buy A Product?",
+    question: "Who uses technology services?",
     answer:
-      "You can browse our products, add them to cart, and checkout using your preferred payment method. We will deliver to your address promptly.",
+      "Both individuals and organizations—such as schools, businesses, and government offices—use technology services to manage and improve their technological operations.",
   },
   {
-    question: "What is Technology service?",
+    question: "How can I choose the right technology service provider?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing awesom. Optio, neque qui velit. Magni dolorum quidem ipsam also as eligendi, totam, facilis laudantium.",
+      "When choosing a technology service provider, consider their expertise, experience, and client reviews. It's important to assess their understanding of your industry and their ability to deliver tailored solutions.",
   },
   {
-    question: "How To Buy A Product?",
+    question: "How To contact for services?",
     answer:
-      "You can browse our products, add them to cart, and checkout using your preferred payment method. We will deliver to your address promptly.",
+      "You can contact us through our website's contact form, email us at info@firstict.com, or call us at +1 (555) 123-4567.",
   },
 ];
 
