@@ -11,7 +11,7 @@ const ServiceCard: React.FC<Props> = ({ service }) => {
     const imageUrl = service.default_image || "https://via.placeholder.com/300";
 
     return (
-        <div className="flex bg-[#414864] shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
+        <div className="flex bg-[#303650] shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
 
             <div className="w-1/2">
                 <img

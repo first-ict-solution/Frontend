@@ -1,5 +1,5 @@
 import { Mail, Phone, Linkedin, Twitter, Github, Facebook } from 'lucide-react';
-import image from "../assets/Artboard 2.png";
+import image from "../assets/Artboard 3.png";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 

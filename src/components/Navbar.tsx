@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Search, X, Menu } from "lucide-react";
-import Logo from "../assets/Artboard 1.png";
+import Logo from "../assets/Artboard 6.png";
 import { Product, Service } from "@/pages/search/type/type";
 import { searchItems } from "@/pages/search/fetcher/fetcher";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +54,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50  w-full bg-gray-800 text-white shadow-md">
+      <header className="sticky top-0 z-50  w-full shadow-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-3">
           <img src={Logo} alt="Logo" className="h-10 w-auto" />
 
