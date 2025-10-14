@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="relative bg-[#414864] rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group w-64">
+    <div className="relative bg-[#303650] rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group w-64">
 
   {discountPercent > 0 && (
     <div className="absolute top-0 right-0 w-16 h-16 z-10 overflow-hidden">
