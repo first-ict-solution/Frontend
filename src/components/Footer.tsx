@@ -13,8 +13,8 @@ const Footer = () => {
       { name: 'System Integration', href: '/service' },
     ],
     company: [
-      { name: 'About Us', href: '/' },
-      { name: 'Our Team', href: '/' },
+      { name: 'About Us', href: '/#about' },
+      { name: 'Our Team', href: '/#team' },
       { name: 'Careers', href: '#' },
     ],
     support: [

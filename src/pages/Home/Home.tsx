@@ -17,7 +17,9 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <AboutSection />
+      <section id="about">
+        <AboutSection />
+      </section>
 
       {/* Latest Products */}
       <section className="px-6 py-12">
@@ -63,7 +65,9 @@ export default function HomePage() {
         <WorkingProcess />
       </section>
 
-      <TeamSection />
+      <section id="team">
+        <TeamSection />
+      </section>
 
       <Footer />
     </>
