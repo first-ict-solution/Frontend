@@ -103,9 +103,9 @@ const About = () => {
                 </div>
                 <div className="text-center">
                   <div className="text-3xl sm:text-4xl font-bold text-orange-600 mb-2">
-                    ISO
+                    0
                   </div>
-                  <div className="text-gray-700 text-sm sm:text-base">Certified Quality</div>
+                  <div className="text-gray-700 text-sm sm:text-base">Downtime</div>
                 </div>
               </div>
             </div>
