@@ -52,20 +52,24 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, [query]);
 
+  const handleHome = () => {
+    navigate("/");
+  }
+
   return (
     <>
-      <header className="sticky top-0 z-50  w-full shadow-md">
-        <div className="container mx-auto flex items-center justify-between px-6 py-3">
-          <img src={Logo} alt="Logo" className="h-10 w-auto" />
+      <header className="sticky bg-white top-0 z-50  w-full shadow-md">
+        <div className="container  mx-auto flex items-center justify-between px-6 py-3">
+          <img onClick={handleHome} src={Logo} alt="Logo" className="h-10 w-auto" />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-6">
-            <a href="/" className="hover:text-gray-300">Home</a>
-            <a href="/product" className="hover:text-gray-300">Product</a>
-            <a href="/service" className="hover:text-gray-300">Service</a>
-            <a href="/content" className="hover:text-gray-300">Content</a>
-            <a href="/resource" className="hover:text-gray-300">Resource</a>
-            <a href="/contact" className="hover:text-gray-300">Contact Us</a>
+            <a href="/" className="hover:text-gray-600">Home</a>
+            <a href="/product" className="hover:text-gray-600">Product</a>
+            <a href="/service" className="hover:text-gray-600">Service</a>
+            <a href="/content" className="hover:text-gray-600">Content</a>
+            <a href="/resource" className="hover:text-gray-600">Resource</a>
+            <a href="/contact" className="hover:text-gray-600">Contact Us</a>
           </nav>
 
           {/* Actions */}
@@ -94,12 +98,12 @@ export default function Navbar() {
         {/* Mobile Nav */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-gray-800 text-white px-6 py-4 space-y-2">
-            <a href="/" className="block py-2 hover:text-gray-300">Home</a>
-            <a href="/product" className="block py-2 hover:text-gray-300">Product</a>
-            <a href="/service" className="block py-2 hover:text-gray-300">Service</a>
-            <a href="/content" className="block py-2 hover:text-gray-300">Content</a>
-            <a href="/resource" className="block py-2 hover:text-gray-300">Resource</a>
-            <a href="/contact" className="hover:text-gray-300">Contact Us</a>
+            <a href="/" className="block py-2 hover:text-gray-600">Home</a>
+            <a href="/product" className="block py-2 hover:text-gray-600">Product</a>
+            <a href="/service" className="block py-2 hover:text-gray-600">Service</a>
+            <a href="/content" className="block py-2 hover:text-gray-600">Content</a>
+            <a href="/resource" className="block py-2 hover:text-gray-600">Resource</a>
+            <a href="/contact" className="hover:text-gray-600">Contact Us</a>
           </div>
         )}
       </header>

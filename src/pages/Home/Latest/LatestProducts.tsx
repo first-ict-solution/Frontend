@@ -42,8 +42,7 @@ export default function LatestProducts() {
           Our Latest Products
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non ratione
-          quis eligendi error.
+           Explore our latest categories and featured products.
         </p>
       </div>
 

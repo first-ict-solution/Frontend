@@ -10,13 +10,27 @@
   border: 3px solid #e5e7eb;
 }
 
+/* Default desktop height */
 .team-image {
   width: 100%;
-  height: 380px; 
+  height: 380px;
   object-fit: cover;
-  border-radius: 10px; 
+  border-radius: 10px;
   display: block;
   transition: transform 0.5s ease;
+}
+
+/* Reduce height for mobile screens */
+@media (max-width: 768px) {
+  .team-image {
+    height: 280px; /* slightly smaller for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .team-image {
+    height: 220px; /* smaller height for mobile phones */
+  }
 }
 
 .team-card:hover .team-image {
