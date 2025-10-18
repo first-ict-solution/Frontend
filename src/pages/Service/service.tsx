@@ -49,7 +49,7 @@ const ServiceList: React.FC = () => {
           <div key={categoryName} className="mb-16">
             <h1 className="text-2xl font-bold text-center mb-10">{categoryName}</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10">
               {categoryServices.map((service) => (
                 <ServiceCard key={service.id} service={service} />
               ))}

@@ -62,13 +62,13 @@ export default function ServiceDetail() {
           {service.name}
         </h1>
 
-        {/* Proposal + Features right, Image left (slider only) */}
+  
         {(service.proposal || service.features) && (
           <section
             className="flex flex-col md:flex-row gap-10"
             data-aos="fade-up"
           >
-            {/* Left: Image Slider */}
+          
             <div className="md:w-1/2">
               <Swiper
                 modules={[Autoplay]}
@@ -82,7 +82,8 @@ export default function ServiceDetail() {
                         <img
                           src={img.image.url}
                           alt={`${service.name} ${img.id}`}
-                          className="w-full h-auto rounded-lg object-cover"
+                          className="w-full aspect-square rounded-lg object-cover"
+                          style={{ transform: "scale(1.75)" }}
                         />
                       </SwiperSlide>
                     ))
@@ -98,7 +99,7 @@ export default function ServiceDetail() {
               </Swiper>
             </div>
 
-            {/* Right: Proposal + Features */}
+
             <div className="md:w-1/2 flex flex-col gap-6">
               {service.features && (
                 <div>
@@ -157,7 +158,7 @@ export default function ServiceDetail() {
             >
               Related Services
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedServices.map((rs, index) => (
                 <div
                   key={rs.id}

@@ -27,9 +27,9 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full py-5 h-[600px] sm:h-[650px] lg:h-[500px] overflow-hidden">
+    <section className="relative w-full py-5 h-[600px] sm:h-[650px] lg:h-[500px] overflow-hidden max-w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="h-full grid lg:grid-cols-2 gap-8 items-center relative">
+        <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative w-full mx-auto overflow-hidden">
           <div
             className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left z-20
                       absolute inset-0 lg:static bg-black/30 lg:bg-transparent p-6 lg:p-0 rounded-lg lg:rounded-none"
