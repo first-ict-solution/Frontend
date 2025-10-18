@@ -12,7 +12,6 @@ export interface Team {
   updated_at?: string;
 }
 
-// You already have:
 export interface ApiResponse<T> {
   success: boolean;
   data: T;

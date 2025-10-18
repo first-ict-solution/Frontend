@@ -42,10 +42,10 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 bg-white">
-      {/* container with more padding on mobile */}
+    
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
-        {/* Heading */}
+      
         <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             About First ICT
@@ -57,10 +57,9 @@ const About = () => {
           </p>
         </div>
 
-        {/* Story + Stats */}
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-16">
           <div className="space-y-6" data-aos="fade-right">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            <h3 className="text-2xl sm:text-3xl font-bold lg:text-left text-center text-gray-900">
               Our Story
             </h3>
             <p className="text-gray-600 leading-relaxed max-w-prose mx-auto lg:mx-0">
@@ -79,7 +78,7 @@ const About = () => {
             </p>
           </div>
 
-          {/* Stats card */}
+        
           <div className="relative" data-aos="fade-left">
             <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-6 sm:p-8">
               <div className="grid grid-cols-2 gap-6">
@@ -112,7 +111,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Values */}
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((value, index) => (
             <div

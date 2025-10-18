@@ -58,7 +58,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky bg-white top-0 z-50  w-full shadow-md">
+      <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
         <div className="container  mx-auto flex items-center justify-between px-6 py-3">
           <img onClick={handleHome} src={Logo} alt="Logo" className="h-10 w-auto" />
 
@@ -88,7 +88,7 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden hover:text-gray-300"
+              className="md:hidden hover:text-gray-900"
             >
               <Menu className="h-6 w-6" />
             </button>
@@ -103,7 +103,7 @@ export default function Navbar() {
             <a href="/service" className="block py-2 hover:text-gray-600">Service</a>
             <a href="/content" className="block py-2 hover:text-gray-600">Content</a>
             <a href="/resource" className="block py-2 hover:text-gray-600">Resource</a>
-            <a href="/contact" className="hover:text-gray-600">Contact Us</a>
+            <a href="/contact" className="block py-2 hover:text-gray-600">Contact Us</a>
           </div>
         )}
       </header>

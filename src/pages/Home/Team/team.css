@@ -10,7 +10,7 @@
   border: 3px solid #e5e7eb;
 }
 
-/* Default desktop height */
+
 .team-image {
   width: 100%;
   height: 380px;
@@ -20,16 +20,36 @@
   transition: transform 0.5s ease;
 }
 
-/* Reduce height for mobile screens */
+
 @media (max-width: 768px) {
   .team-image {
-    height: 280px; /* slightly smaller for tablets */
+    height: 280px;
   }
 }
 
 @media (max-width: 480px) {
+  .overlay-blue {
+    padding: 3px 3px; 
+    font-size: 0.775rem; 
+  }
+
+  .member-role {
+    margin-top: -4px;
+    font-size: 0.75rem;
+  }
+
+  .overlay-black {
+    padding: 4px 6px; 
+    gap: 0.5rem;
+  }
+
+  .overlay-black .social-icon svg {
+    width: 14px;
+    height: 13px;
+  }
+
   .team-image {
-    height: 220px; /* smaller height for mobile phones */
+    height: 200px;
   }
 }
 
