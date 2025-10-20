@@ -1,4 +1,3 @@
-
 import { Routes, Route } from "react-router-dom";
 import HomePage from "@/pages/Home/Home";
 import ProductsPage from "@/pages/Product/product";
@@ -14,13 +13,13 @@ export default function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/product" element={<ProductsPage />} />
-      <Route path="/product/:slug" element={<ProductDetail />} />
-      <Route path="/service" element={<ServiceList />} />
-      <Route path="/service/:slug" element={<ServiceDetail />} />
-      <Route path="/content" element={<ContentPage />} />
-      <Route path="/content/:slug" element={<ContentDetailPage />} />
-      <Route path="/resource" element={<Resource />} />
+      <Route path="/products" element={<ProductsPage />} />
+      <Route path="/products/:slug" element={<ProductDetail />} />
+      <Route path="/services" element={<ServiceList />} />
+      <Route path="/services/:slug" element={<ServiceDetail />} />
+      <Route path="/contents" element={<ContentPage />} />
+      <Route path="/contents/:slug" element={<ContentDetailPage />} />
+      <Route path="/resources" element={<Resource />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>
   );

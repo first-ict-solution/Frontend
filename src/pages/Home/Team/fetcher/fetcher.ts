@@ -1,29 +1,30 @@
-import apiClient from "@/lib/apiClient";
-import type { ApiResponse, PaginatedResponse, Team } from "../type/type";
+import type { Team } from "@/types";
+import ApiService from "@/services/ApiService";
 
-// Get latest teams (paginated)
 export const getLatestTeams = async (
-  limit: number = 10
-): Promise<PaginatedResponse<Team>> => {
-  const res = await apiClient.get<ApiResponse<PaginatedResponse<Team>>>(
-    `/api/teams?limit=${limit}`
-  );
+  limit: number = 10,
+): Promise<{
+  data: Team[];
+  meta: {
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+  };
+}> => {
+  const res = await ApiService.get(`/api/teams?limit=${limit}`);
   return res.data.data;
 };
 
-// Get team details by slug
 export const getTeamDetails = async (slug: string): Promise<Team> => {
-  const res = await apiClient.get<ApiResponse<Team>>(`/api/teams/${slug}`);
+  const res = await ApiService.get(`/api/teams/${slug}`);
   return res.data.data;
 };
 
-// Get related team members
 export const getRelatedTeams = async (
   teamId: number,
-  position: string
+  position: string,
 ): Promise<Team[]> => {
-  const res = await apiClient.get<ApiResponse<Team[]>>(
-    `/api/related-teams/${teamId}/${position}`
-  );
+  const res = await ApiService.get(`/api/related-teams/${teamId}/${position}`);
   return res.data.data;
 };

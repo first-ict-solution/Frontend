@@ -1,6 +1,5 @@
-"use client";
 import React, { useEffect, useState } from "react";
-import type { Paper } from "../Resource/type/paperType";
+import type { Paper } from "@/types";
 import { getLatestPapers } from "../Resource/fetcher/paperFetch";
 import PaperCard from "../Resource/paperCard";
 
@@ -11,8 +10,8 @@ const PaperPage: React.FC = () => {
   useEffect(() => {
     const loadPapers = async () => {
       try {
-        const data = await getLatestPapers(); 
-        setPapers(data || []);               
+        const data = await getLatestPapers();
+        setPapers(data || []);
       } catch (error) {
         console.error("Error fetching papers:", error);
       } finally {
@@ -24,14 +23,14 @@ const PaperPage: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold text-center text-dark mb-6">
+      <h2 className="mb-6 text-3xl font-bold text-center text-dark">
         Latest Papers
       </h2>
 
       {loading ? (
         <p className="text-center">Loading papers...</p>
       ) : papers.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {papers.map((paper) => (
             <PaperCard key={paper.id} paper={paper} />
           ))}

@@ -42,10 +42,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 bg-white">
-    
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        
-      
         <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             About First ICT
@@ -78,7 +75,6 @@ const About = () => {
             </p>
           </div>
 
-        
           <div className="relative" data-aos="fade-left">
             <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-6 sm:p-8">
               <div className="grid grid-cols-2 gap-6">
@@ -86,31 +82,38 @@ const About = () => {
                   <div className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">
                     100%
                   </div>
-                  <div className="text-gray-700 text-sm sm:text-base">Client Satisfaction</div>
+                  <div className="text-gray-700 text-sm sm:text-base">
+                    Client Satisfaction
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl sm:text-4xl font-bold text-purple-600 mb-2">
                     24/7
                   </div>
-                  <div className="text-gray-700 text-sm sm:text-base">Support Available</div>
+                  <div className="text-gray-700 text-sm sm:text-base">
+                    Support Available
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl sm:text-4xl font-bold text-green-600 mb-2">
                     99.9%
                   </div>
-                  <div className="text-gray-700 text-sm sm:text-base">Uptime Guarantee</div>
+                  <div className="text-gray-700 text-sm sm:text-base">
+                    Uptime Guarantee
+                  </div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl sm:text-4xl font-bold text-orange-600 mb-2">
                     0
                   </div>
-                  <div className="text-gray-700 text-sm sm:text-base">Downtime</div>
+                  <div className="text-gray-700 text-sm sm:text-base">
+                    Downtime
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((value, index) => (
@@ -126,7 +129,9 @@ const About = () => {
               <h4 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
                 {value.title}
               </h4>
-              <p className="text-gray-600 max-w-xs mx-auto">{value.description}</p>
+              <p className="text-gray-600 max-w-xs mx-auto">
+                {value.description}
+              </p>
             </div>
           ))}
         </div>

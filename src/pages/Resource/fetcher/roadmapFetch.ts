@@ -1,14 +1,12 @@
-import apiClient from "@/lib/apiClient";
-import type { RoadmapItem, ApiResponse } from "../type/roadmapType";
-
+import ApiService from "@/services/ApiService";
+import type { RoadmapItem } from "@/types";
 
 export const getFullRoadmap = async (): Promise<RoadmapItem[]> => {
-  const res = await apiClient.get<ApiResponse<RoadmapItem[]>>("/api/roadmap");
+  const res = await ApiService.get("/api/roadmap");
   return res.data.data;
 };
 
-
 export const getRoadmapById = async (id: number): Promise<RoadmapItem> => {
-  const res = await apiClient.get<ApiResponse<RoadmapItem>>(`/api/roadmap/${id}`);
+  const res = await ApiService.get(`/api/roadmap/${id}`);
   return res.data.data;
 };

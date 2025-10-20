@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getLatestContents } from "../content/fetcher/fetcher";
-import type { Content } from "../content/type/type";
+import type { Content } from "@/types";
 import ContentCard from "../content/contentCard";
 import Footer from "@/components/Footer";
 
@@ -23,23 +23,23 @@ const ContentPage: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-10 text-body">Loading contents...</p>;
+    return <p className="mt-10 text-center text-body">Loading contents...</p>;
   }
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="px-6 py-20 mx-auto max-w-7xl">
         {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-h1 font-bold text-gray-900">Our Contents</h1>
-          <p className="text-body text-gray-600 mt-2 mb-20">
+        <div className="mb-8 text-center">
+          <h1 className="font-bold text-gray-900 text-h1">Our Contents</h1>
+          <p className="mt-2 mb-20 text-gray-600 text-body">
             Discover the latest articles, tutorials, and guides to boost your
             knowledge.
           </p>
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {contents.map((content) => (
             <ContentCard key={content.id} content={content} />
           ))}

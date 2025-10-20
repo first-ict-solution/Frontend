@@ -1,32 +1,18 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
-import {
-  Mail,
-  Phone,
-  Clock,
-  Send,
-  Plus,
-  Minus,
-} from "lucide-react";
+import { Mail, Phone, Clock, Send, Plus, Minus } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// @ts-ignore
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Footer from "../../components/Footer";
 import { sendContactMessage } from "../Contact/fetcher/fetcher";
-import type { ContactMessage } from "./type/type";
+import { ContactMessage } from "@/types";
 
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-const faqs: FAQItem[] = [
+const faqs = [
   {
     question: "What is Technology service?",
-    answer: "Technology service is the use of technology to help people or businesses work efficiently and solve problems. It includes IT support, software development, cloud services, and cybersecurity to ensure smooth and secure operations."
+    answer:
+      "Technology service is the use of technology to help people or businesses work efficiently and solve problems. It includes IT support, software development, cloud services, and cybersecurity to ensure smooth and secure operations.",
   },
   {
     question: "Who uses technology services?",
@@ -63,7 +49,7 @@ const Contact = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setFormData({
       ...formData,
@@ -83,9 +69,10 @@ const Contact = () => {
         subject: "",
         message: "",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as Error;
       toast.error(
-        error.message || "Something went wrong. Please try again later."
+        err.message || "Something went wrong. Please try again later.",
       );
       console.error(error);
     }
@@ -117,36 +104,36 @@ const Contact = () => {
       <section id="contact" className="py-20 bg-white">
         <ToastContainer position="top-right" autoClose={4000} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           {/* Title */}
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h1 className="text-h1 font-bold text-gray-900 mb-4">
+          <div className="mb-16 text-center" data-aos="fade-up">
+            <h1 className="mb-4 font-bold text-gray-900 text-h1">
               Get In Touch
             </h1>
-            <p className="text-body text-gray-600 max-w-3xl mx-auto">
+            <p className="max-w-3xl mx-auto text-gray-600 text-body">
               Ready to start your next project? We'd love to hear from you. Send
               us a message and we'll respond as soon as possible.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid gap-16 lg:grid-cols-2">
             {/* Contact Info */}
             <div className="space-y-8" data-aos="fade-right">
-              <h2 className="text-h2 mt-10 font-bold text-gray-900 mb-6">
+              <h2 className="mt-10 mb-6 font-bold text-gray-900 text-h2">
                 Contact Information
               </h2>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="bg-blue-50 p-3 rounded-lg">
+                    <div className="p-3 rounded-lg bg-blue-50">
                       <info.icon className="text-blue-600" size={24} />
                     </div>
                     <div>
-                      <h3 className="text-h3 font-semibold text-gray-900 mb-1">
+                      <h3 className="mb-1 font-semibold text-gray-900 text-h3">
                         {info.title}
                       </h3>
-                      <p className="text-body text-gray-600">{info.details}</p>
-                      <p className="text-caption text-gray-500">
+                      <p className="text-gray-600 text-body">{info.details}</p>
+                      <p className="text-gray-500 text-caption">
                         {info.subDetails}
                       </p>
                     </div>
@@ -156,16 +143,16 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gray-50 rounded-xl p-8" data-aos="fade-left">
-              <h2 className="text-h2 font-bold text-gray-900 mb-6">
+            <div className="p-8 bg-gray-50 rounded-xl" data-aos="fade-left">
+              <h2 className="mb-6 font-bold text-gray-900 text-h2">
                 Send us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-caption font-medium text-gray-700 mb-2"
+                      className="block mb-2 font-medium text-gray-700 text-caption"
                     >
                       Name *
                     </label>
@@ -183,7 +170,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-caption font-medium text-gray-700 mb-2"
+                      className="block mb-2 font-medium text-gray-700 text-caption"
                     >
                       Email Address *
                     </label>
@@ -200,11 +187,11 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-caption font-medium text-gray-700 mb-2"
+                      className="block mb-2 font-medium text-gray-700 text-caption"
                     >
                       Phone Number
                     </label>
@@ -221,7 +208,7 @@ const Contact = () => {
                   <div>
                     <label
                       htmlFor="subject"
-                      className="block text-caption font-medium text-gray-700 mb-2"
+                      className="block mb-2 font-medium text-gray-700 text-caption"
                     >
                       Subject *
                     </label>
@@ -249,7 +236,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-caption font-medium text-gray-700 mb-2"
+                    className="block mb-2 font-medium text-gray-700 text-caption"
                   >
                     Message *
                   </label>
@@ -260,18 +247,18 @@ const Contact = () => {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-body"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-body"
                     placeholder="Tell us about your project or how we can help you..."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center group text-body"
+                  className="flex items-center justify-center w-full px-8 py-4 font-semibold text-white transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 group text-body"
                 >
                   Send Message
                   <Send
-                    className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                    className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
                     size={20}
                   />
                 </button>
@@ -280,25 +267,25 @@ const Contact = () => {
           </div>
 
           {/* FAQ Section */}
-          <div className="mt-20 max-w-3xl mx-auto" data-aos="fade-up">
-            <h2 className="text-h2 font-bold text-gray-900 mb-10 text-center">
+          <div className="max-w-3xl mx-auto mt-20" data-aos="fade-up">
+            <h2 className="mb-10 font-bold text-center text-gray-900 text-h2">
               Frequently Asked Questions
             </h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="border rounded-lg overflow-hidden">
+                <div key={index} className="overflow-hidden border rounded-lg">
                   <button
                     type="button"
-                    onClick={() =>
-                      setOpenFAQ(openFAQ === index ? null : index)
-                    }
-                    className="w-full px-6 py-4 flex justify-between items-center bg-blue-50 hover:bg-blue-100 transition-colors"
+                    onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+                    className="flex items-center justify-between w-full px-6 py-4 transition-colors bg-blue-50 hover:bg-blue-100"
                   >
-                    <span className="text-body font-medium text-gray-900">{`#${index + 1} ${faq.question}`}</span>
+                    <span className="font-medium text-gray-900 text-body">{`#${
+                      index + 1
+                    } ${faq.question}`}</span>
                     {openFAQ === index ? <Minus /> : <Plus />}
                   </button>
                   {openFAQ === index && (
-                    <div className="px-6 py-4 bg-blue-50 text-gray-700 text-body">
+                    <div className="px-6 py-4 text-gray-700 bg-blue-50 text-body">
                       {faq.answer}
                     </div>
                   )}

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Content } from "./type/type";
+import type { Content } from "@/types";
 import { Link } from "react-router-dom";
 import { Calendar, User } from "lucide-react";
 
@@ -20,43 +20,41 @@ const truncateText = (html: string, wordLimit: number) => {
 };
 
 const ContentCard: React.FC<Props> = ({ content }) => {
-  const truncatedDescription = truncateText(content.description || "", 10);
-
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex flex-col">
+    <div className="flex flex-col overflow-hidden transition duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
       <img
         src={content.content_image!}
         alt={content.name}
-        className="w-full h-56 object-cover"
+        className="object-cover w-full h-56"
       />
 
-      <div className="p-5 flex flex-col flex-1">
-        <div className="flex items-center text-gray-500 text-sm space-x-4 mb-2">
+      <div className="flex flex-col flex-1 p-5">
+        <div className="flex items-center mb-2 space-x-4 text-sm text-gray-500">
           <span className="flex items-center gap-1">
-            <Calendar className="h-4 w-4" />
+            <Calendar className="w-4 h-4" />
             {new Date(content.created_at).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
-              day: "numeric",
+              day: "numeric"
             })}
           </span>
           <span className="flex items-center gap-1">
-            <User className="h-4 w-4" />
+            <User className="w-4 h-4" />
             Admin
           </span>
         </div>
 
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <h3 className="mb-2 text-lg font-semibold text-gray-900">
           {content.name}
         </h3>
 
-        <p className="text-gray-600 text-sm leading-7 mb-3 flex-1">
-          {truncatedDescription}
+        <p className="flex-1 mb-3 text-sm leading-7 text-gray-600 truncate">
+          {truncateText(content.description || "", 10)}
         </p>
 
         <Link
-          to={`/content/${content.slug}`}
-          className="text-blue-600 font-medium text-sm hover:underline mt-auto"
+          to={`/contents/${content.slug}`}
+          className="mt-auto text-sm font-medium text-blue-600 hover:underline"
         >
           Read More →
         </Link>

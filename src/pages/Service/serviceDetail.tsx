@@ -1,23 +1,22 @@
-// @ts-ignore
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   getServiceDetails,
-  getRelatedServices,
+  getRelatedServices
 } from "../Service/fetcher/fetcher";
-import type { Service } from "../Service/type/type";
+import type { Service } from "@/types";
 import ServiceCard from "../Service/serviceCard";
 import Footer from "@/components/Footer";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "@/styles/swiper.css";
+
 import { Autoplay } from "swiper/modules";
 
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug?: string }>();
-  const navigate = useNavigate();
   const [service, setService] = useState<Service | null>(null);
   const [relatedServices, setRelatedServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
@@ -49,26 +48,24 @@ export default function ServiceDetail() {
     fetchService();
   }, [slug]);
 
-  if (loading) return <p className="text-center mt-20">Loading service...</p>;
-  if (!service) return <p className="text-center mt-20">Service not found.</p>;
+  if (loading) return <p className="mt-20 text-center">Loading service...</p>;
+  if (!service) return <p className="mt-20 text-center">Service not found.</p>;
 
   return (
     <>
-      <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
+      <div className="max-w-6xl px-6 py-12 mx-auto space-y-12">
         <h1
-          className="text-4xl font-bold text-dark text-center pb-5"
+          className="pb-5 text-4xl font-bold text-center text-dark"
           data-aos="fade-down"
         >
           {service.name}
         </h1>
 
-  
         {(service.proposal || service.features) && (
           <section
-            className="flex flex-col md:flex-row gap-10"
+            className="flex flex-col gap-10 md:flex-row"
             data-aos="fade-up"
           >
-          
             <div className="md:w-1/2">
               <Swiper
                 modules={[Autoplay]}
@@ -78,11 +75,11 @@ export default function ServiceDetail() {
               >
                 {service.images && service.images.length > 0
                   ? service.images.map((img) => (
-                      <SwiperSlide key={img.id}>
+                      <SwiperSlide key={img.image.id}>
                         <img
                           src={img.image.url}
-                          alt={`${service.name} ${img.id}`}
-                          className="w-full aspect-square rounded-lg object-cover"
+                          alt={`${service.name}`}
+                          className="object-cover w-full rounded-lg aspect-square"
                           style={{ transform: "scale(1.75)" }}
                         />
                       </SwiperSlide>
@@ -92,18 +89,17 @@ export default function ServiceDetail() {
                         <img
                           src={service.default_image}
                           alt={service.name}
-                          className="w-full h-auto rounded-lg object-cover"
+                          className="object-cover w-full h-auto rounded-lg"
                         />
                       </SwiperSlide>
                     )}
               </Swiper>
             </div>
 
-
-            <div className="md:w-1/2 flex flex-col gap-6">
+            <div className="flex flex-col gap-6 md:w-1/2">
               {service.features && (
                 <div>
-                  <h2 className="text-2xl font-semibold mb-2">Features</h2>
+                  <h2 className="mb-2 text-2xl font-semibold">Features</h2>
                   <div
                     className="text-gray-700"
                     dangerouslySetInnerHTML={{ __html: service.features }}
@@ -115,14 +111,16 @@ export default function ServiceDetail() {
         )}
 
         <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-20 mt-8"
+          className="grid grid-cols-1 gap-20 mt-8 md:grid-cols-2"
           data-aos="fade-up"
         >
           {service.proposal && (
             <section>
-              <h2 className="text-2xl font-semibold mb-2 mt-8 lg:mt-1">Proposal</h2>
+              <h2 className="mt-8 mb-2 text-2xl font-semibold lg:mt-1">
+                Proposal
+              </h2>
               <div
-                className="text-gray-700 text-justify"
+                className="text-justify text-gray-700"
                 dangerouslySetInnerHTML={{ __html: service.proposal }}
               />
             </section>
@@ -130,7 +128,7 @@ export default function ServiceDetail() {
 
           {service.terms && (
             <section>
-              <h2 className="text-2xl font-semibold mb-2">Terms</h2>
+              <h2 className="mb-2 text-2xl font-semibold">Terms</h2>
               <div
                 className="text-gray-700"
                 dangerouslySetInnerHTML={{ __html: service.terms }}
@@ -141,24 +139,24 @@ export default function ServiceDetail() {
 
         {/* Contact button */}
         <div className="text-center" data-aos="fade-up">
-          <button
-            onClick={() => navigate("/contact")}
+          <Link
+            to={"/contact"}
             className="px-6 mb-20 py-3 bg-[#0067c2] hover:bg-[#1381dcff] text-white font-semibold transition-colors duration-200 mt-7 rounded-sm"
           >
             Contact for Service
-          </button>
+          </Link>
         </div>
 
         {/* Related Services */}
         {relatedServices.length > 0 && (
           <section className="mt-16">
             <h2
-              className="text-2xl font-bold mb-12 text-gray-800 text-center"
+              className="mb-12 text-2xl font-bold text-center text-gray-800"
               data-aos="fade-up"
             >
               Related Services
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
               {relatedServices.map((rs, index) => (
                 <div
                   key={rs.id}

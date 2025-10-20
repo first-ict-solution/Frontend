@@ -79,8 +79,8 @@
 }
 
 @font-face {
-  font-family: 'ConthraxBold';
-  src: url('/fonts/Conthrax-SemiBold.otf') format('opentype');
+  font-family: "ConthraxBold";
+  src: url("/fonts/Conthrax-SemiBold.otf") format("opentype");
   font-style: normal;
 }
 
@@ -109,7 +109,8 @@
   .caption {
     @apply text-caption;
   }
-  html, body {
-  overflow-x: hidden;
-}
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
