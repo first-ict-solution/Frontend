@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./team.css";
 import { getLatestTeams } from "./fetcher/fetcher";
-import type { Team } from "./type/type";
-// @ts-ignore
+import type { Team } from "@/types";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Github, Linkedin, Globe } from "lucide-react";
@@ -23,12 +22,12 @@ export default function TeamSection() {
   }, []);
 
   return (
-    <section className="team-section bg-white py-12 px-6 mb-20">
+    <section className="px-6 py-12 mb-20 bg-white team-section">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-center text-3xl font-extrabold text-gray-900 my-20 tracking-wide">
+        <h2 className="my-20 text-3xl font-extrabold tracking-wide text-center text-gray-900">
           OUR TEAM
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
           {teams.map((member, index) => (
             <div
               className="team-card"
@@ -49,7 +48,7 @@ export default function TeamSection() {
                 </div>
 
                 {/* Only render icons if data exists */}
-                <div className="overlay-black flex space-x-3">
+                <div className="flex space-x-3 overlay-black">
                   {member.github && (
                     <a
                       href={member.github}

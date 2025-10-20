@@ -1,16 +1,13 @@
-"use client";
-
 import React, { useEffect, useState, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { getSliders } from "../Hero/fetcher/fetcher";
-import type { Slider } from "../Hero/type/type";
-import { useNavigate } from "react-router-dom";
+import type { Slider } from "@/types";
+import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+
+import "@/styles/swiper.css";
 
 const Hero: React.FC = () => {
   const [sliders, setSliders] = useState<Slider[]>([]);
@@ -18,7 +15,6 @@ const Hero: React.FC = () => {
 
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     getSliders()
@@ -28,14 +24,11 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative w-full py-5 h-[600px] sm:h-[650px] lg:h-[500px] overflow-hidden max-w-full overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-6 items-center relative w-full mx-auto overflow-hidden">
-          <div
-            className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left z-20
-                      absolute inset-0 lg:static bg-black/30 lg:bg-transparent p-6 lg:p-0 rounded-lg lg:rounded-none"
-          >
+      <div className="h-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="relative grid items-center w-full h-full grid-cols-1 gap-6 mx-auto overflow-hidden lg:grid-cols-2">
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center rounded-lg lg:items-start lg:text-left lg:static bg-black/30 lg:bg-transparent lg:p-0 lg:rounded-none">
             <h1
-              className="text-4xl sm:text-4xl lg:text-4xl font-bold text-white lg:text-gray-900 drop-shadow-lg leading-tight"
+              className="text-4xl font-bold leading-tight text-white sm:text-4xl lg:text-4xl lg:text-gray-900 drop-shadow-lg"
               style={{ fontFamily: "ConthraxBold" }}
             >
               Innovative{" "}
@@ -44,23 +37,23 @@ const Hero: React.FC = () => {
               Solutions
             </h1>
 
-            <p className="mt-4 text-lg sm:text-xl text-white lg:text-gray-600 max-w-lg drop-shadow-md">
+            <p className="max-w-lg mt-4 text-lg text-white sm:text-xl lg:text-gray-600 drop-shadow-md">
               First ICT is your trusted partner in digital transformation. We
               craft cutting-edge software solutions that drive business growth
               and innovation.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
-              <button
-                onClick={() => navigate("/service")}
-                className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center group rounded-sm"
+            <div className="flex flex-col justify-center gap-4 mt-6 sm:flex-row lg:justify-start">
+              <Link
+                to={"/services"}
+                className="flex items-center justify-center px-6 py-3 font-semibold text-white transition-colors duration-200 bg-blue-600 rounded-sm sm:px-8 sm:py-4 hover:bg-blue-700 group"
               >
                 Explore Our Service
                 <ArrowRight
-                  className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                  className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
                   size={20}
                 />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -78,22 +71,22 @@ const Hero: React.FC = () => {
                   pagination={{ clickable: true }}
                   navigation={{
                     prevEl: prevRef.current,
-                    nextEl: nextRef.current,
+                    nextEl: nextRef.current
                   }}
                   onBeforeInit={(swiper) => {
-                    // @ts-ignore
+                    // @ts-expect-error nothing
                     swiper.params.navigation.prevEl = prevRef.current;
-                    // @ts-ignore
+                    // @ts-expect-error nothing
                     swiper.params.navigation.nextEl = nextRef.current;
                   }}
-                  className="h-full w-full"
+                  className="w-full h-full"
                 >
                   {sliders.map((slide) => (
-                    <SwiperSlide key={slide.id} className="h-full w-full">
+                    <SwiperSlide key={slide.id} className="w-full h-full">
                       <img
                         src={slide.image.url}
                         alt={`Slide ${slide.id}`}
-                        className="w-full h-full object-cover"
+                        className="object-cover w-full h-full"
                       />
                     </SwiperSlide>
                   ))}

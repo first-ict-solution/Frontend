@@ -5,21 +5,17 @@
   cursor: pointer;
   perspective: 1000px;
   width: 100%;
-  max-width: 280px; 
+  max-width: 280px;
   margin: auto;
   border: 3px solid #e5e7eb;
 }
 
-
 .team-image {
-  width: 100%;
-  height: 380px;
   object-fit: cover;
   border-radius: 10px;
   display: block;
   transition: transform 0.5s ease;
 }
-
 
 @media (max-width: 768px) {
   .team-image {
@@ -29,8 +25,8 @@
 
 @media (max-width: 480px) {
   .overlay-blue {
-    padding: 3px 3px; 
-    font-size: 0.775rem; 
+    padding: 3px 3px;
+    font-size: 0.775rem;
   }
 
   .member-role {
@@ -39,7 +35,7 @@
   }
 
   .overlay-black {
-    padding: 4px 6px; 
+    padding: 4px 6px;
     gap: 0.5rem;
   }
 
@@ -56,7 +52,6 @@
 .team-card:hover .team-image {
   transform: scale(1.05);
 }
-
 
 .overlay-wrapper {
   position: absolute;

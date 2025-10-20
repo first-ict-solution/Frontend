@@ -1,18 +1,14 @@
-"use client";
-
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero/Hero";
-import AboutSection from "@/pages/Home/Section/About"; 
+import AboutSection from "@/pages/Home/Section/About";
 import LatestProducts from "../Home/Latest/LatestProducts";
 import LatestServices from "../Home/Latest/LatestServices";
 import LatestContents from "./Latest/LatestContent";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TeamSection from "./Team/team";
 import WorkingProcess from "./Section/working";
 
 export default function HomePage() {
-  const navigate = useNavigate();
-
   return (
     <>
       <Hero />
@@ -25,12 +21,12 @@ export default function HomePage() {
       <section className="px-6 py-12">
         <LatestProducts />
         <div className="flex justify-center mt-6">
-          <button
-            onClick={() => navigate("/product")}
+          <Link
+            to={"/products"}
             className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition rounded-sm"
           >
             SEE MORE
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -38,12 +34,12 @@ export default function HomePage() {
       <section className="px-6 py-12">
         <LatestServices />
         <div className="flex justify-center mt-6">
-          <button
-            onClick={() => navigate("/service")}
+          <Link
+            to={"/services"}
             className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition rounded-sm"
           >
             SEE MORE
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -51,12 +47,12 @@ export default function HomePage() {
       <section className="px-6 py-12">
         <LatestContents />
         <div className="flex justify-center mt-6">
-          <button
-            onClick={() => navigate("/content")}
+          <Link
+            to={"/contents"}
             className="px-10 py-2 bg-[#0067c2] text-white hover:bg-[#0051a3] transition rounded-sm"
           >
             SEE MORE
-          </button>
+          </Link>
         </div>
       </section>
 

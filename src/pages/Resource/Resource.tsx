@@ -1,34 +1,31 @@
-"use client";
-
 import React from "react";
-import Roadmap from "../Resource/roadmap"; 
+import Roadmap from "../Resource/roadmap";
 import Footer from "@/components/Footer";
 import PaperPage from "./paper";
 
 const Resource: React.FC = () => {
   return (
     <>
-      
-      <section className="text-center py-16 ">
+      <section className="py-16 text-center ">
         <h2 className="text-4xl font-bold text-dark">Resource</h2>
-        <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non ratione quis eligendi error.
+        <p className="max-w-2xl mx-auto mt-4 text-gray-500">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non ratione
+          quis eligendi error.
         </p>
       </section>
 
-      
       <section className="py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl px-4 mx-auto">
           <Roadmap />
         </div>
       </section>
 
       <section className="py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl px-4 mx-auto">
           <PaperPage />
         </div>
       </section>
-      
+
       <Footer />
     </>
   );

@@ -16,7 +16,7 @@ export default function WorkingProcess() {
       id: 2,
       title: "Project Analysis",
       description: "We have the technology and IT expertise to develop.",
-      icon: Project, 
+      icon: Project,
       type: "image",
     },
     {

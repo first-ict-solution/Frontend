@@ -1,10 +1,8 @@
-"use client";
-// @ts-ignore
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import { getLatestProducts } from "@/pages/Product/fetcher/fetcher";
-import type { Product, PaginatedResponse } from "@/pages/Product/type/type";
+import type { Product } from "@/types";
 import ProductCard from "@/pages/Product/productCard";
 
 export default function LatestProducts() {
@@ -16,13 +14,13 @@ export default function LatestProducts() {
       duration: 800,
       easing: "ease-in-out",
       once: true,
-      mirror: false, 
-      offset: 100, 
+      mirror: false,
+      offset: 100,
     });
 
     const fetchProducts = async () => {
       try {
-        const data: PaginatedResponse<Product> = await getLatestProducts(4);
+        const data = await getLatestProducts(4);
         setProducts(data.products || []);
       } catch (error) {
         console.error("Failed to fetch latest products:", error);
@@ -33,34 +31,23 @@ export default function LatestProducts() {
     fetchProducts();
   }, []);
 
-  if (loading) return <p className="text-center py-10">Loading products...</p>;
+  if (loading) return <p className="py-10 text-center">Loading products...</p>;
   if (products.length === 0)
-    return <p className="text-center py-10">No products found.</p>;
+    return <p className="py-10 text-center">No products found.</p>;
 
   return (
     <section className="relative w-full overflow-visible">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        <div className="text-center mb-12" data-aos="fade-up">
-          <h2 className="text-4xl font-bold text-gray-900 mb-3">
+      <div className="max-w-6xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
+        <div className="mb-12 text-center" data-aos="fade-up">
+          <h2 className="mb-3 text-4xl font-bold text-gray-900">
             Our Latest Products
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-gray-600">
             Explore our latest categories and featured products.
           </p>
         </div>
 
-        <div
-          className="
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-4 
-            gap-6 
-            place-items-center
-          "
-        >
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center">
           {products.map((product, index) => (
             <div
               key={product.id}

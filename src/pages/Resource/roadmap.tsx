@@ -1,8 +1,6 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import { getFullRoadmap } from "./fetcher/roadmapFetch";
-import type { RoadmapItem } from "./type/roadmapType";
+import type { RoadmapItem } from "@/types";
 
 const Roadmap: React.FC = () => {
   const [roadmap, setRoadmap] = useState<RoadmapItem[]>([]);
@@ -27,12 +25,12 @@ const Roadmap: React.FC = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Roadmap</h2>
+      <h2 className="mb-4 text-2xl font-bold">Roadmap</h2>
       <ul className="space-y-4">
         {roadmap.map((item) => (
           <li
             key={item.id}
-            className="border p-4 rounded shadow hover:shadow-lg transition"
+            className="p-4 transition border rounded shadow hover:shadow-lg"
           >
             <h3 className="text-xl font-semibold">{item.title}</h3>
             <div className="text-gray-700">

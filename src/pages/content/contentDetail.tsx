@@ -1,13 +1,14 @@
-"use client";
-// @ts-ignore
 import AOS from "aos";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import { Calendar } from "lucide-react";
 
-import { getContentDetails, getLatestContents } from "../content/fetcher/fetcher";
-import type { Content } from "../content/type/type";
+import {
+  getContentDetails,
+  getLatestContents
+} from "../content/fetcher/fetcher";
+import type { Content } from "@/types";
 import Footer from "@/components/Footer";
 
 export default function ContentDetailPage() {
@@ -43,8 +44,8 @@ export default function ContentDetailPage() {
     fetchData();
   }, [slug]);
 
-  if (loading) return <p className="text-center mt-20">Loading content...</p>;
-  if (!content) return <p className="text-center mt-20">Content not found.</p>;
+  if (loading) return <p className="mt-20 text-center">Loading content...</p>;
+  if (!content) return <p className="mt-20 text-center">Content not found.</p>;
 
   const cleanedParagraph = content.paragraph
     ? content.paragraph.replace(/<span[^>]*>/g, "").replace(/<\/span>/g, "")
@@ -52,27 +53,30 @@ export default function ContentDetailPage() {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 gap-10 px-6 py-12 mx-auto max-w-7xl lg:grid-cols-3">
         {/* Main Content */}
         <div className="lg:col-span-2">
           {mainImage && (
             <img
               src={mainImage}
               alt={content.name}
-              className="w-full h-100 object-cover rounded-lg mb-6"
+              className="object-cover w-full mb-6 rounded-lg h-100"
               data-aos="fade-up"
             />
           )}
 
-          <div className="flex justify-between items-center mb-4" data-aos="fade-up">
+          <div
+            className="flex items-center justify-between mb-4"
+            data-aos="fade-up"
+          >
             <h1 className="text-3xl font-bold">{content.name}</h1>
-            <div className="flex items-center gap-2 text-gray-500 text-sm">
-              <Calendar className="h-5 w-5" />
+            <div className="flex items-center gap-2 text-sm text-gray-500">
+              <Calendar className="w-5 h-5" />
               <span>
                 {new Date(content.created_at).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
-                  day: "numeric",
+                  day: "numeric"
                 })}
               </span>
             </div>
@@ -80,7 +84,7 @@ export default function ContentDetailPage() {
 
           {content.description && (
             <div
-              className="text-gray-900 mb-6 leading-relaxed"
+              className="mb-6 leading-relaxed text-gray-900"
               data-aos="fade-up"
               dangerouslySetInnerHTML={{ __html: content.description }}
             />
@@ -88,7 +92,7 @@ export default function ContentDetailPage() {
 
           {cleanedParagraph && (
             <div
-              className="prose max-w-none text-gray-800 mt-4"
+              className="mt-4 prose text-gray-800 max-w-none"
               data-aos="fade-up"
               dangerouslySetInnerHTML={{ __html: cleanedParagraph }}
             />
@@ -97,35 +101,35 @@ export default function ContentDetailPage() {
 
         {/* Sidebar - Latest Posts */}
         <div className="lg:col-span-1">
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Latest Posts</h2>
+          <div className="p-6 bg-white rounded-lg shadow-md">
+            <h2 className="mb-4 text-xl font-semibold">Latest Posts</h2>
             <div className="space-y-4">
               {latestPosts.length > 0 ? (
                 latestPosts.map((post) => (
                   <Link
-                    to={`/content/${post.slug}`}
+                    to={`/contents/${post.slug}`}
                     key={post.slug}
                     className="flex items-center space-x-3 group"
                   >
                     <img
                       src={post.content_image || "/placeholder.jpg"}
                       alt={post.name}
-                      className="w-16 h-16 object-cover rounded-md"
+                      className="object-cover w-16 h-16 rounded-md"
                     />
                     <div>
                       <p className="text-sm text-gray-600">
                         <span className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
+                          <Calendar className="w-4 h-4" />
                           {new Date(post.created_at)
                             .toLocaleDateString("en-US", {
                               year: "numeric",
                               month: "long",
-                              day: "numeric",
+                              day: "numeric"
                             })
                             .toUpperCase()}
                         </span>
                       </p>
-                      <p className="group-hover:text-blue-600 transition line-clamp-2">
+                      <p className="transition group-hover:text-blue-600 line-clamp-2">
                         {post.name}
                       </p>
                     </div>
