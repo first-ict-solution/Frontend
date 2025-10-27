@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Search, X, Menu } from "lucide-react";
 import Logo from "../assets/Artboard 6.png";
 import { Product, Service } from "@/types";
@@ -15,6 +15,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const [showSearch, setShowSearch] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -66,9 +68,39 @@ export default function Navbar() {
     navigate("/");
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        setIsVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", throttledScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", throttledScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className="fixed top-0 left-0 z-50 w-full bg-white shadow-md">
+      <header
+        className={`${
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        } fixed top-0 left-0 z-50 w-full bg-white shadow transition-all duration-300`}
+      >
         <div className="container flex items-center justify-between px-6 py-3 mx-auto">
           <img
             onClick={handleHome}

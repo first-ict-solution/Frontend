@@ -22,16 +22,18 @@ const ServiceCard: React.FC<Props> = ({ service }) => {
       </div>
 
       <div className="flex flex-col justify-between w-2/3 p-4">
-        <h3 className="text-lg font-bold text-white">{service.name}</h3>
+        <div>
+          <h3 className="text-lg font-bold text-white">{service.name}</h3>
 
-        {service.category_name && (
-          <p className="mt-5 text-sm font-medium text-gray-700">
-            <span className="text-white">{service.category_name}</span>
-          </p>
-        )}
+          {service.category_name && (
+            <p className="text-sm font-medium text-gray-700 ">
+              <span className="text-white">{service.category_name}</span>
+            </p>
+          )}
+        </div>
 
         <div className="flex items-center justify-between mt-4">
-          <CheckCircle size={24} className="text-green-500" />
+          <CheckCircle size={18} className="text-green-500" />
 
           <Link
             to={`/services/${service.slug}`}

@@ -13,7 +13,7 @@ export default function TeamSection() {
     AOS.init({
       duration: 800,
       easing: "ease-in-out",
-      once: true,
+      once: true
     });
 
     getLatestTeams(8)
