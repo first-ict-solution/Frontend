@@ -53,7 +53,7 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <div className="max-w-6xl px-6 py-12 mx-auto space-y-12">
+      <div className="max-w-6xl px-6 py-20 mx-auto space-y-12">
         <h1
           className="pb-5 text-4xl font-bold text-center text-dark"
           data-aos="fade-down"
@@ -61,73 +61,58 @@ export default function ServiceDetail() {
           {service.name}
         </h1>
 
-        {(service.proposal || service.features) && (
-          <section
-            className="flex flex-col gap-10 md:flex-row"
-            data-aos="fade-up"
-          >
-            <div className="md:w-1/2">
-              <Swiper
-                modules={[Autoplay]}
-                autoplay={{ delay: 4000 }}
-                spaceBetween={10}
-                slidesPerView={1}
-              >
-                {service.images && service.images.length > 0
-                  ? service.images.map((img) => (
-                      <SwiperSlide key={img.image.id}>
-                        <img
-                          src={img.image.url}
-                          alt={`${service.name}`}
-                          className="object-cover w-full rounded-lg aspect-square"
-                          style={{ transform: "scale(1.75)" }}
-                        />
-                      </SwiperSlide>
-                    ))
-                  : service.default_image && (
-                      <SwiperSlide>
-                        <img
-                          src={service.default_image}
-                          alt={service.name}
-                          className="object-cover w-full h-auto rounded-lg"
-                        />
-                      </SwiperSlide>
-                    )}
-              </Swiper>
-            </div>
-
-            <div className="flex flex-col gap-6 md:w-1/2">
-              {service.features && (
-                <div>
-                  <h2 className="mb-2 text-2xl font-semibold">Features</h2>
-                  <div
-                    className="text-gray-700"
-                    dangerouslySetInnerHTML={{ __html: service.features }}
-                  />
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
-        <div
-          className="grid grid-cols-1 gap-20 mt-8 md:grid-cols-2"
-          data-aos="fade-up"
-        >
+        <section className="gap-12 columns-1 md:columns-2">
+          <div>
+            <Swiper
+              modules={[Autoplay]}
+              autoplay={{ delay: 4000 }}
+              spaceBetween={10}
+              slidesPerView={1}
+            >
+              {service.images && service.images.length > 0
+                ? service.images.map((img) => (
+                    <SwiperSlide key={img.image.id}>
+                      <img
+                        src={img.image.url}
+                        alt={`${service.name}`}
+                        className="object-cover w-full rounded-lg aspect-square"
+                        style={{ transform: "scale(1.75)" }}
+                      />
+                    </SwiperSlide>
+                  ))
+                : service.default_image && (
+                    <SwiperSlide>
+                      <img
+                        src={service.default_image}
+                        alt={service.name}
+                        className="object-cover w-full h-auto rounded-lg"
+                      />
+                    </SwiperSlide>
+                  )}
+            </Swiper>
+          </div>
+          <div className="py-4">
+            {service.features && (
+              <div>
+                <h2 className="mb-2 text-2xl font-semibold">Features</h2>
+                <div
+                  className="text-gray-700"
+                  dangerouslySetInnerHTML={{ __html: service.features }}
+                />
+              </div>
+            )}
+          </div>
           {service.proposal && (
-            <section>
-              <h2 className="mt-8 mb-2 text-2xl font-semibold lg:mt-1">
-                Proposal
-              </h2>
+            <section className="py-4">
+              <h2 className="mb-2 text-2xl font-semibold">Proposal</h2>
               <div
                 className="text-justify text-gray-700"
                 dangerouslySetInnerHTML={{ __html: service.proposal }}
               />
             </section>
           )}
-
           {service.terms && (
-            <section>
+            <section className="py-4">
               <h2 className="mb-2 text-2xl font-semibold">Terms</h2>
               <div
                 className="text-gray-700"
@@ -135,7 +120,7 @@ export default function ServiceDetail() {
               />
             </section>
           )}
-        </div>
+        </section>
 
         {/* Contact button */}
         <div className="text-center" data-aos="fade-up">
