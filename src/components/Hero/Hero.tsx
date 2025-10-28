@@ -23,21 +23,23 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full py-5 h-[600px] sm:h-[650px] lg:h-[500px] overflow-hidden max-w-full overflow-x-hidden">
+    <section className="relative w-full py-5 h-auto lg:h-[500px] overflow-hidden max-w-full overflow-x-hidden">
       <div className="h-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="relative grid items-center w-full h-full grid-cols-1 gap-6 mx-auto overflow-hidden lg:grid-cols-2">
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center rounded-lg lg:items-start lg:text-left lg:static bg-black/30 lg:bg-transparent lg:p-0 lg:rounded-none">
+          
+          {/* Text Section */}
+          <div className="order-1 z-20 flex flex-col items-center justify-center p-6 text-center mt-20 lg:mt-0 lg:items-start lg:text-left lg:static bg-transparent lg:p-0">
             <h1
-              className="text-4xl font-bold leading-tight text-white sm:text-4xl lg:text-4xl lg:text-gray-900 drop-shadow-lg"
+              className="text-4xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-4xl"
               style={{ fontFamily: "ConthraxBold" }}
             >
               Innovative{" "}
-              <span className="text-blue-400 lg:text-blue-600">Software</span>
+              <span className="text-blue-600">Software</span>
               <br />
               Solutions
             </h1>
 
-            <p className="max-w-lg mt-4 text-lg text-white sm:text-xl lg:text-gray-600 drop-shadow-md">
+            <p className="max-w-lg mt-4 text-lg text-gray-600 sm:text-xl">
               First ICT is your trusted partner in digital transformation. We
               craft cutting-edge software solutions that drive business growth
               and innovation.
@@ -57,41 +59,40 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative w-full h-full overflow-hidden">
+          {/* Slider Section */}
+          <div className="order-2 relative w-full h-[300px] sm:h-[400px] lg:h-full overflow-hidden rounded-md">
             {loading ? (
               <div className="flex items-center justify-center h-full bg-gray-200">
                 Loading...
               </div>
             ) : sliders.length > 0 ? (
-              <>
-                <Swiper
-                  modules={[Navigation, Pagination, Autoplay]}
-                  loop
-                  autoplay={{ delay: 3000, disableOnInteraction: false }}
-                  pagination={{ clickable: true }}
-                  navigation={{
-                    prevEl: prevRef.current,
-                    nextEl: nextRef.current
-                  }}
-                  onBeforeInit={(swiper) => {
-                    // @ts-expect-error nothing
-                    swiper.params.navigation.prevEl = prevRef.current;
-                    // @ts-expect-error nothing
-                    swiper.params.navigation.nextEl = nextRef.current;
-                  }}
-                  className="w-full h-full"
-                >
-                  {sliders.map((slide) => (
-                    <SwiperSlide key={slide.id} className="w-full h-full">
-                      <img
-                        src={slide.image.url}
-                        alt={`Slide ${slide.id}`}
-                        className="object-cover w-full h-full"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </>
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                loop
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                navigation={{
+                  prevEl: prevRef.current,
+                  nextEl: nextRef.current
+                }}
+                onBeforeInit={(swiper) => {
+                  // @ts-expect-error nothing
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  // @ts-expect-error nothing
+                  swiper.params.navigation.nextEl = nextRef.current;
+                }}
+                className="w-full h-full"
+              >
+                {sliders.map((slide) => (
+                  <SwiperSlide key={slide.id} className="w-full h-full">
+                    <img
+                      src={slide.image.url}
+                      alt={`Slide ${slide.id}`}
+                      className="object-cover w-full h-full"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             ) : (
               <div className="flex items-center justify-center h-full bg-gray-200">
                 No sliders available
