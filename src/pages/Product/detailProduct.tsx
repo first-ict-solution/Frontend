@@ -67,12 +67,8 @@ export default function ProductDetail() {
   return (
     <>
       <div className="max-w-6xl px-6 py-12 mx-auto">
-        <h2 className="py-10 mb-10 text-3xl font-bold text-center text-dark">
-          Detail Products
-        </h2>
-
         <div
-          className="grid grid-cols-1 gap-10 md:grid-cols-2"
+          className="grid grid-cols-1 gap-10 pt-12 md:grid-cols-2"
           data-aos="fade-right"
         >
           <div data-aos="zoom-in">
@@ -97,15 +93,15 @@ export default function ProductDetail() {
           </div>
 
           <div data-aos="fade-left">
-            <h1 className="mb-3 text-3xl font-bold">{product.name}</h1>
+            <h1 className="mb-1 text-3xl font-bold">{product.name}</h1>
 
-            <div className="mb-4">
+            <div className="mb-1">
               {discountAmount > 0 && (
-                <p className="mb-2 text-gray-500 line-through">
+                <p className="mb-1 text-gray-500 line-through">
                   Ks {originalPrice}
                 </p>
               )}
-              <p className="mb-2 text-2xl font-bold text-green-600">
+              <p className="mb-1 text-xl font-bold text-green-600">
                 Ks {finalPrice}
               </p>
               {discountAmount > 0 && (
@@ -115,7 +111,7 @@ export default function ProductDetail() {
               )}
             </div>
 
-            <p className="mb-2">
+            <p className="mb-1">
               {product.instock ? (
                 <span className="text-green-600">✔ Instock Now</span>
               ) : (
@@ -123,36 +119,28 @@ export default function ProductDetail() {
               )}
             </p>
 
-            <div className="mt-8">
-              <h2 className="mb-2 text-lg font-semibold">Description</h2>
+            <div className="mt-4">
               <div
-                className="space-y-2 leading-relaxed text-gray-700"
+                className="mb-4 space-y-2 leading-relaxed text-gray-700"
                 dangerouslySetInnerHTML={{
-                  __html: truncateHtml(product.description || "", 50)
+                  __html: product.specification || ""
                 }}
               ></div>
-
-              {getWordCount(product.description || "") > 50 && (
-                <button
-                  onClick={() => setShowPopup(true)}
-                  className="mt-2 text-blue-600 hover:underline"
-                >
-                  See More
-                </button>
-              )}
             </div>
           </div>
         </div>
 
-        <h2 className="mt-10 mb-4 text-xl font-semibold">Specification</h2>
+        <h2 className="mt-10 mb-4 text-xl font-semibold">
+          Product Description
+        </h2>
         <div
-          className="mb-4 space-y-2 leading-relaxed text-gray-700 ms-5"
+          className="space-y-2 leading-relaxed text-gray-700"
           dangerouslySetInnerHTML={{
-            __html: product.specification || ""
+            __html: truncateHtml(product.description || "", 50)
           }}
         ></div>
 
-        <div className="text-center" data-aos="fade-up">
+        <div className="mt-12 text-center">
           <Link
             to={"/contact"}
             className="px-10 my-20 py-3 bg-[#0067c2] hover:bg-[#1381dcff] text-white font-semibold transition-colors duration-200 rounded-sm"

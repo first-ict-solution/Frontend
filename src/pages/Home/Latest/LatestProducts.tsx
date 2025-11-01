@@ -15,7 +15,7 @@ export default function LatestProducts() {
       easing: "ease-in-out",
       once: true,
       mirror: false,
-      offset: 100,
+      offset: 100
     });
 
     const fetchProducts = async () => {

@@ -53,7 +53,7 @@ export default function ContentDetailPage() {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-10 px-6 py-12 mx-auto max-w-7xl lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-10 px-6 py-20 mx-auto max-w-7xl lg:grid-cols-3">
         {/* Main Content */}
         <div className="lg:col-span-2">
           {mainImage && (
@@ -84,7 +84,7 @@ export default function ContentDetailPage() {
 
           {content.description && (
             <div
-              className="mb-6 leading-relaxed text-gray-900"
+              className="mb-6 leading-relaxed text-gray-600"
               data-aos="fade-up"
               dangerouslySetInnerHTML={{ __html: content.description }}
             />
