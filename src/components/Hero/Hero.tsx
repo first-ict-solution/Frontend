@@ -26,15 +26,13 @@ const Hero: React.FC = () => {
     <section className="relative w-full py-5 h-auto lg:h-[500px] overflow-hidden max-w-full overflow-x-hidden">
       <div className="h-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="relative grid items-center w-full h-full grid-cols-1 gap-6 mx-auto overflow-hidden lg:grid-cols-2">
-          
           {/* Text Section */}
-          <div className="order-1 z-20 flex flex-col items-center justify-center p-6 text-center mt-20 lg:mt-0 lg:items-start lg:text-left lg:static bg-transparent lg:p-0">
+          <div className="z-20 flex flex-col items-center justify-center order-1 p-6 mt-20 text-center bg-transparent lg:mt-0 lg:items-start lg:text-left lg:static lg:p-0">
             <h1
               className="text-4xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-4xl"
               style={{ fontFamily: "ConthraxBold" }}
             >
-              Innovative{" "}
-              <span className="text-blue-600">Software</span>
+              Innovative <span className="text-blue-600">Software</span>
               <br />
               Solutions
             </h1>

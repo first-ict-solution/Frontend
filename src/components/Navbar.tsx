@@ -148,81 +148,93 @@ export default function Navbar() {
 
         {/* Mobile Nav */}
         {mobileMenuOpen && (
-          <div className="px-6 py-4 space-y-2 text-white bg-gray-800 md:hidden">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="block py-2 hover:text-gray-600"
-              >
-                {link.name}
-              </Link>
-            ))}
+          <div className="relative">
+            <div className="px-6 py-4 space-y-2 text-white bg-gray-800 md:hidden">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="block py-2 hover:text-gray-600"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+            <div
+              onClick={() => setMobileMenuOpen(false)}
+              className="absolute w-full h-screen bg-gray-600 opacity-60"
+            />
           </div>
         )}
       </header>
 
       {/* Search Overlay */}
       {showSearch && (
-        <div className="fixed top-0 left-0 w-full h-[100] bg-gray-100 z-50 p-6 overflow-auto">
-          <button
-            onClick={() => setShowSearch(false)}
-            className="absolute text-black right-6 top-6 hover:text-gray-600"
-          >
-            <X className="w-6 h-6" />
-          </button>
-          <div className="max-w-2xl mx-auto">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products and services..."
-              className="w-full px-4 py-3 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+        <div className="fixed top-0 left-0 z-50 w-full overflow-auto">
+          <div className="p-6 bg-gray-100">
+            <button
+              onClick={() => setShowSearch(false)}
+              className="absolute text-black right-2 top-2 lg:top-6 lg:right-6 hover:text-gray-600"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="max-w-2xl mx-auto">
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search products and services..."
+                className="w-full px-4 py-3 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
 
-            <div className="mt-4 overflow-y-auto bg-white rounded-md shadow-lg max-h-80">
-              {loading && <p className="p-4 text-gray-500">Searching...</p>}
+              <div className="mt-4 overflow-y-auto bg-white rounded-md shadow-lg max-h-80">
+                {loading && <p className="p-4 text-gray-500">Searching...</p>}
 
-              {!loading &&
-              query &&
-              results.products.length === 0 &&
-              results.services.length === 0 ? (
-                <p className="p-4 text-gray-500">No results found.</p>
-              ) : null}
+                {!loading &&
+                query &&
+                results.products.length === 0 &&
+                results.services.length === 0 ? (
+                  <p className="p-4 text-gray-500">No results found.</p>
+                ) : null}
 
-              {!loading && results.products.length > 0 ? (
-                <div className="px-4 py-2 border-b">
-                  <h4 className="mb-2 font-bold">Products</h4>
-                  {results.products.map((item) => (
-                    <Link
-                      key={item.id}
-                      to={`/products/${item.slug}`}
-                      className="block px-2 py-1 rounded hover:bg-gray-100"
-                      onClick={() => setShowSearch(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
+                {!loading && results.products.length > 0 ? (
+                  <div className="px-4 py-2 border-b">
+                    <h4 className="mb-2 font-bold">Products</h4>
+                    {results.products.map((item) => (
+                      <Link
+                        key={item.id}
+                        to={`/products/${item.slug}`}
+                        className="block px-2 py-1 rounded hover:bg-gray-100"
+                        onClick={() => setShowSearch(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
 
-              {!loading && results.services.length > 0 ? (
-                <div className="px-4 py-2">
-                  <h4 className="mb-2 font-bold">Services</h4>
-                  {results.services.map((item) => (
-                    <Link
-                      key={item.id}
-                      to={`/services/${item.slug.trim()}`}
-                      className="block px-2 py-1 rounded hover:bg-gray-100"
-                      onClick={() => setShowSearch(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
+                {!loading && results.services.length > 0 ? (
+                  <div className="px-4 py-2">
+                    <h4 className="mb-2 font-bold">Services</h4>
+                    {results.services.map((item) => (
+                      <Link
+                        key={item.id}
+                        to={`/services/${item.slug.trim()}`}
+                        className="block px-2 py-1 rounded hover:bg-gray-100"
+                        onClick={() => setShowSearch(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
+          <div
+            className="h-screen bg-gray-600 opacity-60"
+            onClick={() => setShowSearch(false)}
+          ></div>
         </div>
       )}
     </>
