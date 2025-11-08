@@ -35,7 +35,7 @@ const ContentCard: React.FC<Props> = ({ content }) => {
             {new Date(content.created_at).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
-              day: "numeric"
+              day: "numeric",
             })}
           </span>
           <span className="flex items-center gap-1">

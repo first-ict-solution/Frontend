@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   getProductDetails,
-  getRelatedProducts
+  getRelatedProducts,
 } from "../Product/fetcher/fetcher";
 import type { Product } from "@/types";
 import ProductCard from "../Product/productCard";
@@ -17,10 +17,6 @@ export default function ProductDetail() {
   const [loading, setLoading] = useState(true);
   const [mainImage, setMainImage] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
-  const getWordCount = (html: string) => {
-    const text = html.replace(/<[^>]+>/g, " ");
-    return text.trim().split(/\s+/).length;
-  };
 
   const truncateHtml = (html: string, limit: number) => {
     const text = html.replace(/<[^>]+>/g, " ");
@@ -123,7 +119,7 @@ export default function ProductDetail() {
               <div
                 className="mb-4 space-y-2 leading-relaxed text-gray-700"
                 dangerouslySetInnerHTML={{
-                  __html: product.specification || ""
+                  __html: product.specification || "",
                 }}
               ></div>
             </div>
@@ -136,7 +132,7 @@ export default function ProductDetail() {
         <div
           className="space-y-2 leading-relaxed text-gray-700"
           dangerouslySetInnerHTML={{
-            __html: truncateHtml(product.description || "", 50)
+            __html: truncateHtml(product.description || "", 50),
           }}
         ></div>
 

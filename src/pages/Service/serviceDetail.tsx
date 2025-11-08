@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   getServiceDetails,
-  getRelatedServices
+  getRelatedServices,
 } from "../Service/fetcher/fetcher";
 import type { Service } from "@/types";
 import ServiceCard from "../Service/serviceCard";

@@ -11,22 +11,22 @@ const Footer = () => {
       { name: "Services", href: "/services" },
       { name: "Contents", href: "/contents" },
       { name: "Resources", href: "/resources" },
-      { name: "Contact Us", href: "/contact" }
+      { name: "Contact Us", href: "/contact" },
     ],
     support: [
       { name: "Contact Us", href: "/contact" },
       { name: "Help Center", href: "#" },
       { name: "Privacy Policy", href: "#" },
       { name: "Terms of Service", href: "#" },
-      { name: "Cookie Policy", href: "#" }
-    ]
+      { name: "Cookie Policy", href: "#" },
+    ],
   };
 
   const socialLinks = [
     { icon: Linkedin, href: "#", color: "hover:text-blue-600" },
     { icon: Twitter, href: "#", color: "hover:text-blue-400" },
     { icon: Github, href: "#", color: "hover:text-gray-400" },
-    { icon: Facebook, href: "#", color: "hover:text-blue-700" }
+    { icon: Facebook, href: "#", color: "hover:text-blue-700" },
   ];
 
   return (
