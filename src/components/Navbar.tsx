@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Services", href: "/services" },
   { name: "Contents", href: "/contents" },
   { name: "Resources", href: "/resources" },
-  { name: "Contact Us", href: "/contact" }
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -25,7 +25,7 @@ export default function Navbar() {
     services: Service[];
   }>({
     products: [],
-    services: []
+    services: [],
   });
   const [loading, setLoading] = useState(false);
 
@@ -43,15 +43,15 @@ export default function Navbar() {
         const data = await searchItems(query);
 
         const matchedProducts = data.products.filter((product) =>
-          product.name.toLowerCase().includes(query.toLowerCase())
+          product.name.toLowerCase().includes(query.toLowerCase()),
         );
         const matchedService = data.services.filter((service) =>
-          service.name.toLowerCase().includes(query.toLowerCase())
+          service.name.toLowerCase().includes(query.toLowerCase()),
         );
 
         setResults({
           products: matchedProducts,
-          services: matchedService
+          services: matchedService,
         });
       } catch (err) {
         console.error(err);

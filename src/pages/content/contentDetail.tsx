@@ -6,7 +6,7 @@ import { Calendar } from "lucide-react";
 
 import {
   getContentDetails,
-  getLatestContents
+  getLatestContents,
 } from "../content/fetcher/fetcher";
 import type { Content } from "@/types";
 import Footer from "@/components/Footer";
@@ -76,7 +76,7 @@ export default function ContentDetailPage() {
                 {new Date(content.created_at).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
-                  day: "numeric"
+                  day: "numeric",
                 })}
               </span>
             </div>
@@ -124,7 +124,7 @@ export default function ContentDetailPage() {
                             .toLocaleDateString("en-US", {
                               year: "numeric",
                               month: "long",
-                              day: "numeric"
+                              day: "numeric",
                             })
                             .toUpperCase()}
                         </span>

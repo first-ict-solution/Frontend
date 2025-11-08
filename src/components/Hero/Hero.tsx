@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
                 pagination={{ clickable: true }}
                 navigation={{
                   prevEl: prevRef.current,
-                  nextEl: nextRef.current
+                  nextEl: nextRef.current,
                 }}
                 onBeforeInit={(swiper) => {
                   // @ts-expect-error nothing
