@@ -50,7 +50,7 @@ export default function LatestServices() {
         slidesPerView={1}
         navigation={{
           nextEl: ".custom-next",
-          prevEl: ".custom-prev"
+          prevEl: ".custom-prev",
         }}
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000 }}
@@ -63,7 +63,7 @@ export default function LatestServices() {
               style={{
                 backgroundImage: `url(${service.default_image})`,
                 backgroundSize: "cover",
-                backgroundPosition: "center"
+                backgroundPosition: "center",
               }}
             >
               <div className="absolute inset-0 bg-black/50"></div>
