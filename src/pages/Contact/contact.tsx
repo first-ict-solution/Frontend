@@ -12,23 +12,44 @@ const faqs = [
   {
     question: "What is Technology service?",
     answer:
-      "Technology service is the use of technology to help people or businesses work efficiently and solve problems. It includes IT support, software development, cloud services, and cybersecurity to ensure smooth and secure operations.",
+      "Technology service is the use of technology to help people or businesses work efficiently and solve problems. It includes IT support, software development, cloud services, and cybersecurity to ensure smooth and secure operations."
   },
   {
     question: "Who uses technology services?",
     answer:
-      "Both individuals and organizations—such as schools, businesses, and government offices—use technology services to manage and improve their technological operations.",
+      "Both individuals and organizations—such as schools, businesses, and government offices—use technology services to manage and improve their technological operations."
   },
   {
     question: "How can I choose the right technology service provider?",
     answer:
-      "When choosing a technology service provider, consider their expertise, experience, and client reviews. It's important to assess their understanding of your industry and their ability to deliver tailored solutions.",
+      "When choosing a technology service provider, consider their expertise, experience, and client reviews. It's important to assess their understanding of your industry and their ability to deliver tailored solutions."
   },
   {
     question: "How To contact for services?",
     answer:
-      "You can contact us through our website's contact form, email us at info@firstict.com, or call us at +1 (555) 123-4567.",
+      "You can contact us through our website's contact form, email us at info@firstict.com, or call us at +1 (555) 123-4567."
+  }
+];
+
+const contactInfo = [
+  {
+    icon: Mail,
+    title: "Email Us",
+    details: "info@firstict.com",
+    subDetails: "support@firstict.com"
   },
+  {
+    icon: Phone,
+    title: "Call Us",
+    details: "+959 752 446 774",
+    subDetails: "+959 752 446 774"
+  },
+  {
+    icon: Clock,
+    title: "Business Hours",
+    details: "Mon - Fri: 9:00 AM - 6:00 PM",
+    subDetails: "Sat: 10:00 AM - 4:00 PM"
+  }
 ];
 
 const Contact = () => {
@@ -37,7 +58,7 @@ const Contact = () => {
     email: "",
     phone: "",
     subject: "",
-    message: "",
+    message: ""
   });
 
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
@@ -49,11 +70,11 @@ const Contact = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    >
   ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -67,37 +88,16 @@ const Contact = () => {
         email: "",
         phone: "",
         subject: "",
-        message: "",
+        message: ""
       });
     } catch (error: unknown) {
       const err = error as Error;
       toast.error(
-        err.message || "Something went wrong. Please try again later.",
+        err.message || "Something went wrong. Please try again later."
       );
       console.error(error);
     }
   };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: "info@firstict.com",
-      subDetails: "support@firstict.com",
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      details: "+1 (555) 123-4567",
-      subDetails: "+1 (555) 987-6543",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: "Mon - Fri: 9:00 AM - 6:00 PM",
-      subDetails: "Sat: 10:00 AM - 4:00 PM",
-    },
-  ];
 
   return (
     <>
@@ -218,7 +218,7 @@ const Contact = () => {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-body"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-body"
                     >
                       <option value="">Select a subject</option>
                       <option value="web-development">Web Development</option>
