@@ -76,7 +76,6 @@ export default function ServiceDetail() {
                         src={img.image.url}
                         alt={`${service.name}`}
                         className="object-cover w-full rounded-lg aspect-square"
-                        style={{ transform: "scale(1.75)" }}
                       />
                     </SwiperSlide>
                   ))
