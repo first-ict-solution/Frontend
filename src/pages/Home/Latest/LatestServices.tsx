@@ -10,7 +10,7 @@ import "@/styles/swiper.css";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function LatestServices() {
+export default function LatestServices({ onData }: { onData?: (v: boolean) => void }) {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,9 @@ export default function LatestServices() {
     const fetchServices = async () => {
       try {
         const data = await getLatestServices(3);
-        setServices(data.services || []);
+        const list = data.services || [];
+        setServices(list);
+        if (onData) onData(list.length > 0);
       } catch (error) {
         console.error("Failed to fetch latest services:", error);
       } finally {
@@ -31,7 +33,7 @@ export default function LatestServices() {
 
   if (loading) return <p className="py-10 text-center">Loading services...</p>;
   if (services.length === 0)
-    return <p className="py-10 text-center">No services found.</p>;
+    return <div></div>;
 
   return (
     <section className="relative max-w-6xl px-6 py-12 mx-auto">

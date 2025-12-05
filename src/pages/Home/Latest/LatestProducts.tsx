@@ -5,7 +5,7 @@ import { getLatestProducts } from "@/pages/Product/fetcher/fetcher";
 import type { Product } from "@/types";
 import ProductCard from "@/pages/Product/productCard";
 
-export default function LatestProducts() {
+export default function LatestProducts({ onData }: { onData?: (v: boolean) => void }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,7 +21,9 @@ export default function LatestProducts() {
     const fetchProducts = async () => {
       try {
         const data = await getLatestProducts(4);
-        setProducts(data.products || []);
+        const list = data.products || [];
+        setProducts(list);
+        if (onData) onData(list.length > 0);
       } catch (error) {
         console.error("Failed to fetch latest products:", error);
       } finally {
@@ -33,7 +35,7 @@ export default function LatestProducts() {
 
   if (loading) return <p className="py-10 text-center">Loading products...</p>;
   if (products.length === 0)
-    return <p className="py-10 text-center">No products found.</p>;
+    return <div></div>;
 
   return (
     <section className="relative w-full overflow-visible">

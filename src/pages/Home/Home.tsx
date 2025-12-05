@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero/Hero";
 import AboutSection from "@/pages/Home/Section/About";
@@ -9,6 +10,9 @@ import TeamSection from "./Team/team";
 import WorkingProcess from "./Section/working";
 
 export default function HomePage() {
+  const [hasContentData, setHasContentData] = useState(false);
+  const [hasProductData, setHasProductData] = useState(false);
+  const [hasServiceData, setHasServiceData] = useState(false);
   return (
     <>
       <Hero />
@@ -18,8 +22,10 @@ export default function HomePage() {
       </section>
 
       {/* Latest Products */}
+      {hasProductData && (
       <section className="px-6 py-12">
-        <LatestProducts />
+        <LatestProducts onData={(v) => setHasProductData(v)} />
+
         <div className="flex justify-center mt-6">
           <Link
             to={"/products"}
@@ -29,10 +35,13 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      )}  
 
       {/* Latest Services */}
+      {hasServiceData && (
       <section className="px-6 py-12">
-        <LatestServices />
+        <LatestServices onData={(v) => setHasServiceData(v)} />
+
         <div className="flex justify-center mt-6">
           <Link
             to={"/services"}
@@ -42,10 +51,12 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
+    )}
       {/* Latest Contents */}
+      {hasContentData && (
       <section className="px-6 py-12">
-        <LatestContents />
+        <LatestContents onData={(v) => setHasContentData(v)} />
+
         <div className="flex justify-center mt-6">
           <Link
             to={"/contents"}
@@ -55,6 +66,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      )}
 
       {/* Working Process */}
       <section className="px-6 py-12">

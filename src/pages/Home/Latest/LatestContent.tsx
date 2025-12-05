@@ -5,7 +5,7 @@ import { getLatestContents } from "@/pages/content/fetcher/fetcher";
 import type { Content } from "@/types";
 import ContentCard from "@/pages/content/contentCard";
 
-export default function LatestContents() {
+export default function LatestContents({ onData }: { onData?: (v: boolean) => void }) {
   const [contents, setContents] = useState<Content[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,9 @@ export default function LatestContents() {
     const fetchContents = async () => {
       try {
         const data: Content[] = await getLatestContents();
-        setContents(data.slice(0, 3));
+        const latest = data.slice(0, 3);
+        setContents(latest);
+        if (onData) onData(latest.length > 0);
       } catch (error) {
         console.error("Failed to fetch latest contents:", error);
       } finally {
@@ -32,7 +34,7 @@ export default function LatestContents() {
 
   if (loading) return <p className="py-10 text-center">Loading contents...</p>;
   if (contents.length === 0)
-    return <p className="py-10 text-center">No contents found.</p>;
+    return <div></div>;
 
   return (
     <section className="max-w-6xl px-6 py-12 mx-auto">
