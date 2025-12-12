@@ -95,7 +95,7 @@ export default function ServiceDetail() {
               <div>
                 <h2 className="mb-2 text-2xl font-semibold">Features</h2>
                 <div
-                  className="text-gray-700"
+                  className="text-justify text-gray-700"
                   dangerouslySetInnerHTML={{ __html: service.features }}
                 />
               </div>
@@ -114,7 +114,7 @@ export default function ServiceDetail() {
             <section className="py-4">
               <h2 className="mb-2 text-2xl font-semibold">Terms</h2>
               <div
-                className="text-gray-700"
+                className="text-justify text-gray-700"
                 dangerouslySetInnerHTML={{ __html: service.terms }}
               />
             </section>
